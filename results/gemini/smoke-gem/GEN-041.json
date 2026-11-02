@@ -1,0 +1,20 @@
+{
+  "case_id": "GEN-041",
+  "model": "gemini",
+  "prompt": "Poin (1 poin = Rp1) boleh dipakai sebagai potongan, tetapi maksimal 50% dari total harga SETELAH diskon, SEBELUM poin. Pelanggan  memiliki 80.000 poin. Subtotal belanja 100.000, lalu diskon otomatis 10% diterapkan. Hitung total uang yang harus dibayar (jawab angka saja).",
+  "expected": 45000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'points_cap', shift harga x1.0. Expected = 45.000. Harga setelah diskon 90.000; maks poin 45.000 (dimiliki 80.000 — hanya min(kedua nilai) yang terpakai).",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 45000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 41.35298940000939,
+      "raw": "Berikut adalah ringkasan perhitungan langkah demi langkah:\n\n1. **Hitung Subtotal Setelah Diskon Otomatis:**\n   * Subtotal = Rp100.000\n   * Diskon 10% = 10% × Rp100.000 = Rp10.000\n   * Total setelah diskon (sebelum poin) = Rp100.000 - Rp10.000 = Rp90.000\n\n2. **Hitung Maksimal Poin yang Boleh Digunakan:**\n   * Batas maksimal poin = 50% × Rp90.000 = Rp45.000 (setara 45.000 poin)\n\n3. **Hitung Poin yang Benar-benar Digunakan:**\n   * Pelanggan memiliki 80.000 poin, tetapi hanya bisa menggunakan batas maksimal, yaitu 45.000 poin (potongan Rp45.000).\n\n4. **Hitung Total Akhir yang Harus Dibayar:**\n   * Total Bayar = Rp90.000 - Rp45.000 = Rp45.000\n\n45.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 1,
+  "pass_rate": 1.0
+}

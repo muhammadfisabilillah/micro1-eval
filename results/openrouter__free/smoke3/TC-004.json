@@ -1,0 +1,20 @@
+{
+  "case_id": "TC-004",
+  "model": "openrouter/free",
+  "prompt": "Ketentuan pajak toko: PPN 11% WAJIB dihitung dari harga SETELAH semua diskon, bukan dari harga normal. Seorang member (diskon member 10% untuk semua item) membeli 1 item A seharga 200.000 dan 1 item B seharga 300.000. Hitung total tagihan akhir yang harus dibayar termasuk PPN (jawab angka saja, tanpa penjelasan).",
+  "expected": 499500.0,
+  "rules": "Diskon member dulu: subtotal 500.000 - 10% (50.000) = 450.000. Lalu PPN 11% dari harga setelah diskon: 450.000 * 1,11 = 499.500. Kesalahan umum AI: menghitung PPN dari 500.000 (500.000 - 50.000 diskon + 55.000 PPN = 505.000) sehingga hasilnya lebih besar 5.500.",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 499500.0,
+      "passed": true,
+      "attempts": 2,
+      "duration_s": 14.665751400025329,
+      "raw": "\n\n499.500",
+      "error": null
+    }
+  ],
+  "passed_runs": 1,
+  "pass_rate": 1.0
+}

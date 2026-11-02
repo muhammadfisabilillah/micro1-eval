@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-001",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "Toko menerapkan diskon BERTINGKAT. Aturan: (1) member mendapat diskon 15% jika subtotalnya lebih dari 500.000; (2) semua produk kategori 'Elektronik' mendapat diskon TAMBAHAN 10% dari harga jual item tersebut. Pelanggan member membeli TV (kategori 'Elektronik') seharga 2.000.000, Buku (kategori 'Buku') seharga 100.000. Hitung grand total yang dibayar (jawab angka saja).",
+  "expected": 1585000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tiered_disc', shift harga x1.0. Expected = 1.585.000. Subtotal 2.100.000; diskon member 315.000; ekstra kategori 200.000.",
+  "category": "ordering + category-binding",
+  "scenario": "tiered_disc",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 1615000.0,
+      "passed": false,
+      "attempts": 1,
+      "duration_s": 3.44518069998594,
+      "raw": "Berikut adalah langkah-langkah perhitungan grand total:\n\n1. **Menghitung harga setelah diskon kategori (Elektronik):**\n   - TV (Elektronik): 2.000.000 - (10% x 2.000.000) = 2.000.000 - 200.000 = 1.800.000.\n   - Buku (Bukan Elektronik): 100.000.\n\n2. **Menghitung subtotal:**\n   - 1.800.000 + 100.000 = 1.900.000.\n\n3. **Menerapkan diskon member:**\n   - Karena subtotal (1.900.000) > 500.000, maka pelanggan mendapat diskon 15%.\n   - Diskon member = 15% x 1.900.000 = 285.000.\n\n4. **Menghitung grand total:**\n   - 1.900.000 - 285.000 = 1.615.000.\n\n1.615.000",
+      "error": "Expected: 1585000.00, Actual: 1615000.00, Selisih: 30000.00 (melebihi toleransi 0.01)"
+    },
+    {
+      "run": 2,
+      "actual": 1615000.0,
+      "passed": false,
+      "attempts": 2,
+      "duration_s": 78.35938389998046,
+      "raw": "Berikut adalah langkah-langkah perhitungan grand total:\n\n1. **Menghitung harga setelah diskon kategori (Elektronik):**\n   - TV (Elektronik): 2.000.000 - (10% x 2.000.000) = 2.000.000 - 200.000 = 1.800.000.\n   - Buku (Bukan Elektronik): 100.000.\n\n2. **Menghitung subtotal:**\n   - 1.800.000 + 100.000 = 1.900.000.\n\n3. **Menerapkan diskon member:**\n   - Karena subtotal (1.900.000) > 500.000, maka pelanggan mendapat diskon 15%.\n   - Diskon member = 15% x 1.900.000 = 285.000.\n\n4. **Menghitung grand total:**\n   - 1.900.000 - 285.000 = 1.615.000.\n\n1.615.000",
+      "error": "Expected: 1585000.00, Actual: 1615000.00, Selisih: 30000.00 (melebihi toleransi 0.01)"
+    },
+    {
+      "run": 3,
+      "actual": 1615000.0,
+      "passed": false,
+      "attempts": 1,
+      "duration_s": 1.6309113000170328,
+      "raw": "Berikut adalah langkah-langkah perhitungan grand total:\n\n1. **Menghitung harga setelah diskon kategori (Elektronik):**\n   - TV (Elektronik): 2.000.000 - (10% x 2.000.000) = 2.000.000 - 200.000 = 1.800.000.\n   - Buku (Bukan Elektronik): 100.000.\n\n2. **Menghitung subtotal:**\n   - 1.800.000 + 100.000 = 1.900.000.\n\n3. **Menerapkan diskon member:**\n   - Karena subtotal (1.900.000) > 500.000, maka pelanggan mendapat diskon 15%.\n   - Diskon member = 15% x 1.900.000 = 285.000.\n\n4. **Menghitung grand total:**\n   - 1.900.000 - 285.000 = 1.615.000.\n\n1.615.000",
+      "error": "Expected: 1585000.00, Actual: 1615000.00, Selisih: 30000.00 (melebihi toleransi 0.01)"
+    }
+  ],
+  "passed_runs": 0,
+  "pass_rate": 0.0
+}

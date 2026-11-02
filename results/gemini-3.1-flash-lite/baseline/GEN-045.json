@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-045",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "Poin (1 poin = Rp1) boleh dipakai sebagai potongan, tetapi maksimal 40% dari total harga SETELAH diskon, SEBELUM poin. Pelanggan  memiliki 90.000 poin. Subtotal belanja 300.000, lalu diskon otomatis 20% diterapkan. Hitung total uang yang harus dibayar (jawab angka saja).",
+  "expected": 150000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'points_cap', shift harga x1.2. Expected = 150.000. Harga setelah diskon 240.000; maks poin 96.000 (dimiliki 90.000 — hanya min(kedua nilai) yang terpakai).",
+  "category": "points-cap (maks % dari total)",
+  "scenario": "points_cap",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 150000.0,
+      "passed": true,
+      "attempts": 3,
+      "duration_s": 53.56438769999659,
+      "raw": "Berikut adalah langkah-langkah perhitungan logikanya:\n\n1. **Subtotal awal:** Rp300.000\n2. **Diskon otomatis (20%):** 20% x 300.000 = Rp60.000\n3. **Total setelah diskon (sebelum poin):** 300.000 - 60.000 = Rp240.000\n4. **Batas maksimal penggunaan poin (40% dari total setelah diskon):** 40% x 240.000 = Rp96.000\n5. **Poin yang tersedia:** 90.000 poin (setara Rp90.000)\n6. **Poin yang digunakan:** Karena 90.000 < 96.000, maka seluruh 90.000 poin dapat digunakan.\n7. **Total yang harus dibayar:** 240.000 - 90.000 = 150.000\n\n150.000",
+      "error": null
+    },
+    {
+      "run": 2,
+      "actual": 150000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 3.652458500000648,
+      "raw": "Berikut adalah langkah-langkah perhitungan logikanya:\n\n1. **Subtotal awal:** Rp300.000\n2. **Diskon otomatis (20%):** 20% x 300.000 = Rp60.000\n3. **Total setelah diskon (sebelum poin):** 300.000 - 60.000 = Rp240.000\n4. **Batas maksimal penggunaan poin (40% dari total setelah diskon):** 40% x 240.000 = Rp96.000\n5. **Poin yang tersedia:** 90.000 poin (setara Rp90.000)\n6. **Poin yang digunakan:** Karena 90.000 < 96.000, maka seluruh 90.000 poin dapat digunakan.\n7. **Total yang harus dibayar:** 240.000 - 90.000 = 150.000\n\n150.000",
+      "error": null
+    },
+    {
+      "run": 3,
+      "actual": 150000.0,
+      "passed": true,
+      "attempts": 2,
+      "duration_s": 16.45732119999593,
+      "raw": "Berikut adalah langkah-langkah perhitungan logikanya:\n\n1. **Subtotal awal:** Rp300.000\n2. **Diskon otomatis (20%):** 20% x 300.000 = Rp60.000\n3. **Total setelah diskon (sebelum poin):** 300.000 - 60.000 = Rp240.000\n4. **Batas maksimal penggunaan poin (40% dari total setelah diskon):** 40% x 240.000 = Rp96.000\n5. **Poin yang tersedia:** 90.000 poin (setara Rp90.000)\n6. **Poin yang digunakan:** Karena 90.000 < 96.000, maka seluruh 90.000 poin dapat digunakan.\n7. **Total yang harus dibayar:** 240.000 - 90.000 = 150.000\n\n150.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 3,
+  "pass_rate": 1.0
+}

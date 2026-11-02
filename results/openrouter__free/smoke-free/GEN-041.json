@@ -1,0 +1,20 @@
+{
+  "case_id": "GEN-041",
+  "model": "openrouter/free",
+  "prompt": "Poin (1 poin = Rp1) boleh dipakai sebagai potongan, tetapi maksimal 50% dari total harga SETELAH diskon, SEBELUM poin. Pelanggan  memiliki 80.000 poin. Subtotal belanja 100.000, lalu diskon otomatis 10% diterapkan. Hitung total uang yang harus dibayar (jawab angka saja).",
+  "expected": 45000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'points_cap', shift harga x1.0. Expected = 45.000. Harga setelah diskon 90.000; maks poin 45.000 (dimiliki 80.000 — hanya min(kedua nilai) yang terpakai).",
+  "runs": [
+    {
+      "run": 1,
+      "actual": null,
+      "passed": false,
+      "attempts": 5,
+      "duration_s": 79.20578869999736,
+      "raw": "",
+      "error": "429/5xx setelah 5 percobaan: Error code: 429 - Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day"
+    }
+  ],
+  "passed_runs": 0,
+  "pass_rate": 0.0
+}

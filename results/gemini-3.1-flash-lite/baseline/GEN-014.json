@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-014",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "Voucher potongan 25.000 berlaku hanya jika subtotal (TIDAK termasuk ongkir) minimal 100.000. Pelanggan membeli Sepatu (kategori 'Fashion') seharga 42.000, Topi (kategori 'Fashion') seharga 66.000 dengan ongkir 15.000. Hitung total tagihan akhir (subtotal + ongkir - voucher jika syarat terpenuhi; jawab angka saja).",
+  "expected": 98000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'min_subtotal_voucher', shift harga x1.2. Expected = 98.000. Subtotal 108.000 >= minimum 100.000 → voucher BERLAKU.",
+  "category": "boundary (cek subtotal tanpa ongkir)",
+  "scenario": "min_subtotal_voucher",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 98000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 19.871043600025587,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan:\n\n1. **Menghitung Subtotal:**\n   Harga Sepatu (42.000) + Harga Topi (66.000) = 108.000.\n\n2. **Verifikasi Syarat Voucher:**\n   Subtotal 108.000 memenuhi syarat minimal 100.000, sehingga voucher potongan 25.000 berlaku.\n\n3. **Menghitung Total Tagihan:**\n   Subtotal (108.000) + Ongkir (15.000) - Voucher (25.000) = 98.000.\n\n98.000",
+      "error": null
+    },
+    {
+      "run": 2,
+      "actual": 98000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.4340196000121068,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan:\n\n1. **Menghitung Subtotal:**\n   Harga Sepatu (42.000) + Harga Topi (66.000) = 108.000.\n\n2. **Verifikasi Syarat Voucher:**\n   Subtotal 108.000 memenuhi syarat minimal 100.000, sehingga voucher potongan 25.000 berlaku.\n\n3. **Menghitung Total Tagihan:**\n   Subtotal (108.000) + Ongkir (15.000) - Voucher (25.000) = 98.000.\n\n98.000",
+      "error": null
+    },
+    {
+      "run": 3,
+      "actual": 98000.0,
+      "passed": true,
+      "attempts": 3,
+      "duration_s": 83.08899180000299,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan:\n\n1. **Menghitung Subtotal:**\n   Harga Sepatu (42.000) + Harga Topi (66.000) = 108.000.\n\n2. **Verifikasi Syarat Voucher:**\n   Subtotal 108.000 memenuhi syarat minimal 100.000, sehingga voucher potongan 25.000 berlaku.\n\n3. **Menghitung Total Tagihan:**\n   Subtotal (108.000) + Ongkir (15.000) - Voucher (25.000) = 98.000.\n\n98.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 3,
+  "pass_rate": 1.0
+}

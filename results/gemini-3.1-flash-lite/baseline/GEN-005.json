@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-005",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "Toko menerapkan diskon BERTINGKAT. Aturan: (1) member mendapat diskon 12% jika subtotalnya lebih dari 1.000.000; (2) semua produk kategori 'Elektronik' mendapat diskon TAMBAHAN 15% dari harga jual item tersebut. Pelanggan member membeli Laptop (kategori 'Elektronik') seharga 3.600.000, Sepatu (kategori 'Fashion') seharga 480.000. Hitung grand total yang dibayar (jawab angka saja).",
+  "expected": 3050400.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tiered_disc', shift harga x1.2. Expected = 3.050.400. Subtotal 4.080.000; diskon member 489.600; ekstra kategori 540.000.",
+  "category": "ordering + category-binding",
+  "scenario": "tiered_disc",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 3115200.0,
+      "passed": false,
+      "attempts": 1,
+      "duration_s": 1.2622835999936797,
+      "raw": "Berikut adalah langkah-langkah perhitungan grand total:\n\n1. **Menghitung harga setelah diskon kategori 'Elektronik':**\n   - Laptop: 3.600.000 - (15% x 3.600.000) = 3.600.000 - 540.000 = 3.060.000.\n   - Sepatu: 480.000 (tidak ada diskon kategori).\n\n2. **Menghitung subtotal:**\n   - 3.060.000 + 480.000 = 3.540.000.\n\n3. **Menghitung diskon member:**\n   - Karena subtotal (3.540.000) > 1.000.000, maka pelanggan mendapat diskon 12%.\n   - Diskon member: 12% x 3.540.000 = 424.800.\n\n4. **Menghitung grand total:**\n   - 3.540.000 - 424.800 = 3.115.200.\n\n3.115.200",
+      "error": "Expected: 3050400.00, Actual: 3115200.00, Selisih: 64800.00 (melebihi toleransi 0.01)"
+    },
+    {
+      "run": 2,
+      "actual": 3115200.0,
+      "passed": false,
+      "attempts": 2,
+      "duration_s": 31.51314990001265,
+      "raw": "Berikut adalah langkah-langkah perhitungan grand total:\n\n1. **Menghitung harga setelah diskon kategori 'Elektronik':**\n   - Laptop: 3.600.000 - (15% x 3.600.000) = 3.600.000 - 540.000 = 3.060.000.\n   - Sepatu: 480.000 (tidak ada diskon kategori).\n\n2. **Menghitung subtotal:**\n   - 3.060.000 + 480.000 = 3.540.000.\n\n3. **Menghitung diskon member:**\n   - Karena subtotal (3.540.000) > 1.000.000, maka pelanggan mendapat diskon 12%.\n   - Diskon member: 12% x 3.540.000 = 424.800.\n\n4. **Menghitung grand total:**\n   - 3.540.000 - 424.800 = 3.115.200.\n\n3.115.200",
+      "error": "Expected: 3050400.00, Actual: 3115200.00, Selisih: 64800.00 (melebihi toleransi 0.01)"
+    },
+    {
+      "run": 3,
+      "actual": 3115200.0,
+      "passed": false,
+      "attempts": 2,
+      "duration_s": 66.56639600000926,
+      "raw": "Berikut adalah langkah-langkah perhitungan grand total:\n\n1. **Menghitung harga setelah diskon kategori 'Elektronik':**\n   - Laptop: 3.600.000 - (15% x 3.600.000) = 3.600.000 - 540.000 = 3.060.000.\n   - Sepatu: 480.000 (tidak ada diskon kategori).\n\n2. **Menghitung subtotal:**\n   - 3.060.000 + 480.000 = 3.540.000.\n\n3. **Menghitung diskon member:**\n   - Karena subtotal (3.540.000) > 1.000.000, maka pelanggan mendapat diskon 12%.\n   - Diskon member: 12% x 3.540.000 = 424.800.\n\n4. **Menghitung grand total:**\n   - 3.540.000 - 424.800 = 3.115.200.\n\n3.115.200",
+      "error": "Expected: 3050400.00, Actual: 3115200.00, Selisih: 64800.00 (melebihi toleransi 0.01)"
+    }
+  ],
+  "passed_runs": 0,
+  "pass_rate": 0.0
+}

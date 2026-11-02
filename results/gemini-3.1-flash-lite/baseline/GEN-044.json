@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-044",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "Poin (1 poin = Rp1) boleh dipakai sebagai potongan, tetapi maksimal 40% dari total harga SETELAH diskon, SEBELUM poin. Pelanggan  memiliki 90.000 poin. Subtotal belanja 250.000, lalu diskon otomatis 20% diterapkan. Hitung total uang yang harus dibayar (jawab angka saja).",
+  "expected": 120000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'points_cap', shift harga x1.0. Expected = 120.000. Harga setelah diskon 200.000; maks poin 80.000 (dimiliki 90.000 — hanya min(kedua nilai) yang terpakai).",
+  "category": "points-cap (maks % dari total)",
+  "scenario": "points_cap",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 120000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 15.999604500015266,
+      "raw": "Berikut adalah langkah-langkah perhitungan logikanya:\n\n1. **Menghitung harga setelah diskon 20%:**\n   Diskon = 20% × 250.000 = 50.000\n   Harga setelah diskon = 250.000 - 50.000 = 200.000\n\n2. **Menghitung batas maksimal penggunaan poin:**\n   Maksimal poin = 40% × 200.000 = 80.000\n   Karena pelanggan memiliki 90.000 poin, maka jumlah poin yang dapat digunakan adalah batas maksimalnya, yaitu 80.000.\n\n3. **Menghitung total yang harus dibayar:**\n   Total = 200.000 - 80.000 = 120.000\n\n120.000",
+      "error": null
+    },
+    {
+      "run": 2,
+      "actual": 120000.0,
+      "passed": true,
+      "attempts": 2,
+      "duration_s": 15.215927400015062,
+      "raw": "Berikut adalah langkah-langkah perhitungan logikanya:\n\n1. **Menghitung harga setelah diskon 20%:**\n   Diskon = 20% × 250.000 = 50.000\n   Harga setelah diskon = 250.000 - 50.000 = 200.000\n\n2. **Menghitung batas maksimal penggunaan poin:**\n   Maksimal poin = 40% × 200.000 = 80.000\n   Karena pelanggan memiliki 90.000 poin, maka jumlah poin yang dapat digunakan adalah batas maksimalnya, yaitu 80.000.\n\n3. **Menghitung total yang harus dibayar:**\n   Total = 200.000 - 80.000 = 120.000\n\n120.000",
+      "error": null
+    },
+    {
+      "run": 3,
+      "actual": 120000.0,
+      "passed": true,
+      "attempts": 2,
+      "duration_s": 69.23604179997346,
+      "raw": "Berikut adalah langkah-langkah perhitungan logikanya:\n\n1. **Menghitung harga setelah diskon 20%:**\n   Diskon = 20% × 250.000 = 50.000\n   Harga setelah diskon = 250.000 - 50.000 = 200.000\n\n2. **Menghitung batas maksimal penggunaan poin:**\n   Maksimal poin = 40% × 200.000 = 80.000\n   Karena pelanggan memiliki 90.000 poin, maka jumlah poin yang dapat digunakan adalah batas maksimalnya, yaitu 80.000.\n\n3. **Menghitung total yang harus dibayar:**\n   Total = 200.000 - 80.000 = 120.000\n\n120.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 3,
+  "pass_rate": 1.0
+}

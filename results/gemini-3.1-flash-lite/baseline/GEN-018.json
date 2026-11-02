@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-018",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "Voucher potongan 20.000 berlaku hanya jika subtotal (TIDAK termasuk ongkir) minimal 90.000. Pelanggan membeli Kaos (kategori 'Fashion') seharga 100.000, Sarung Tangan (kategori 'Fashion') seharga 90.000 dengan ongkir 10.000. Hitung total tagihan akhir (subtotal + ongkir - voucher jika syarat terpenuhi; jawab angka saja).",
+  "expected": 180000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'min_subtotal_voucher', shift harga x2.0. Expected = 180.000. Subtotal 190.000 >= minimum 90.000 → voucher BERLAKU.",
+  "category": "boundary (cek subtotal tanpa ongkir)",
+  "scenario": "min_subtotal_voucher",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 180000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 21.51784340001177,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan:\n\n1. **Menghitung Subtotal:**\n   Harga Kaos (100.000) + Harga Sarung Tangan (90.000) = 190.000.\n\n2. **Verifikasi Syarat Voucher:**\n   Subtotal (190.000) >= Syarat minimal (90.000). Syarat terpenuhi, sehingga voucher 20.000 berlaku.\n\n3. **Menghitung Total Tagihan Akhir:**\n   (Subtotal 190.000 + Ongkir 10.000) - Voucher 20.000 = 180.000.\n\n180.000",
+      "error": null
+    },
+    {
+      "run": 2,
+      "actual": 180000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 7.9767667000123765,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan:\n\n1. **Menghitung Subtotal:**\n   Harga Kaos (100.000) + Harga Sarung Tangan (90.000) = 190.000.\n\n2. **Verifikasi Syarat Voucher:**\n   Subtotal (190.000) >= Syarat minimal (90.000). Syarat terpenuhi, sehingga voucher 20.000 berlaku.\n\n3. **Menghitung Total Tagihan Akhir:**\n   (Subtotal 190.000 + Ongkir 10.000) - Voucher 20.000 = 180.000.\n\n180.000",
+      "error": null
+    },
+    {
+      "run": 3,
+      "actual": 180000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 8.96498249997967,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan:\n\n1. **Menghitung Subtotal:**\n   Harga Kaos (100.000) + Harga Sarung Tangan (90.000) = 190.000.\n\n2. **Verifikasi Syarat Voucher:**\n   Subtotal (190.000) >= Syarat minimal (90.000). Syarat terpenuhi, sehingga voucher 20.000 berlaku.\n\n3. **Menghitung Total Tagihan Akhir:**\n   (Subtotal 190.000 + Ongkir 10.000) - Voucher 20.000 = 180.000.\n\n180.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 3,
+  "pass_rate": 1.0
+}

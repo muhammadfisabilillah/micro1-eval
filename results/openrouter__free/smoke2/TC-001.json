@@ -1,0 +1,20 @@
+{
+  "case_id": "TC-001",
+  "model": "openrouter/free",
+  "prompt": "Sebuah toko online menerapkan diskon BERTINGKAT. Aturan: (1) Member mendapat diskon 15% jika subtotal belanja > 500.000. (2) Selain itu, semua produk dengan kategori 'Elektronik' mendapat diskon tambahan 10% dari harga jual item tersebut. Kondisi: pelanggan adalah member, membeli 1 TV kategori 'Elektronik' seharga 2.000.000 dan 1 Buku seharga 100.000. Hitung grand total yang harus dibayar (jawab angka saja, tanpa penjelasan).",
+  "expected": 1585000.0,
+  "rules": "Diskon member 15% berlaku karena subtotal 2.100.000 > 500.000. Diskon elektronik 10% dihitung dari harga item Elektronik saja (2.000.000 * 10% = 200.000), bukan dari subtotal. Diskon bertingkat dihitung berurutan: 2.100.000 - 315.000 - 200.000 = 1.585.000.",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 1615000.0,
+      "passed": false,
+      "attempts": 1,
+      "duration_s": 18.901431400008732,
+      "raw": "1.615.000",
+      "error": "Expected: 1585000.00, Actual: 1615000.00, Selisih: 30000.00 (melebihi toleransi 0.01)"
+    }
+  ],
+  "passed_runs": 0,
+  "pass_rate": 0.0
+}

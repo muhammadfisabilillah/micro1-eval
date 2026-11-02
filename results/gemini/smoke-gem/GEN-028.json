@@ -1,0 +1,20 @@
+{
+  "case_id": "GEN-028",
+  "model": "gemini",
+  "prompt": "Gratis ongkir hanya jika subtotal SETELAH diskon/voucher lebih besar dari 120.000; jika tidak, ongkir 25.000 tetap dibayar. Yang jualan Speaker (kategori 'Elektronik') seharga 120.000, Kamera (kategori 'Elektronik') seharga 70.000 lalu memakai voucher potongan 50.000. Hitung total tagihan akhir termasuk ongkir sesuai aturan (jawab angka saja).",
+  "expected": 140000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'free_shipping_after_voucher', shift harga x1.0. Expected = 140.000. Setelah voucher 140.000 > 120.000 → ongkir GRATIS.",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 140000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 10.804852800007211,
+      "raw": "Berikut adalah rincian perhitungan total tagihan akhir langkah demi langkah:\n\n1. **Subtotal Awal (Harga Barang):**\n   * Speaker: 120.000\n   * Kamera: 70.000\n   * Total Subtotal Awal = 120.000 + 70.000 = **190.000**\n\n2. **Subtotal Setelah Diskon/Voucher:**\n   * Voucher Potongan: 50.000\n   * Subtotal Setelah Diskon = 190.000 - 50.000 = **140.000**\n\n3. **Penentuan Biaya Ongkir:**\n   * Syarat gratis ongkir: Subtotal setelah diskon > 120.000.\n   * Karena subtotal setelah diskon adalah 140.000 (lebih besar dari 120.000), maka mendapat **Gratis Ongkir (0)**.\n\n4. **Total Tagihan Akhir:**\n   * Total = Subtotal Setelah Diskon + Ongkir\n   * Total = 140.000 + 0 = **140.000**\n\n140.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 1,
+  "pass_rate": 1.0
+}

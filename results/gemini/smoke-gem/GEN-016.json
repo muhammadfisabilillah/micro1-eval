@@ -1,0 +1,20 @@
+{
+  "case_id": "GEN-016",
+  "model": "gemini",
+  "prompt": "Voucher potongan 20.000 berlaku hanya jika subtotal (TIDAK termasuk ongkir) minimal 90.000. Pelanggan membeli Kaos (kategori 'Fashion') seharga 50.000, Sarung Tangan (kategori 'Fashion') seharga 45.000 dengan ongkir 10.000. Hitung total tagihan akhir (subtotal + ongkir - voucher jika syarat terpenuhi; jawab angka saja).",
+  "expected": 85000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'min_subtotal_voucher', shift harga x1.0. Expected = 85.000. Subtotal 95.000 >= minimum 90.000 → voucher BERLAKU.",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 85000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 9.179286800004775,
+      "raw": "Berikut adalah ringkasan perhitungan total tagihan pelanggan:\n\n1. **Hitung Subtotal Pembelian (tidak termasuk ongkir):**\n   * Kaos: 50.000\n   * Sarung Tangan: 45.000\n   * **Subtotal** = 50.000 + 45.000 = **95.000**\n\n2. **Cek Syarat Voucher:**\n   * Syarat minimal subtotal: 90.000\n   * Karena subtotal (95.000) ≥ 90.000, maka syarat terpenuhi dan pelanggan mendapatkan potongan voucher sebesar **20.000**.\n\n3. **Hitung Total Tagihan Akhir:**\n   * Total Tagihan = Subtotal + Ongkir - Voucher\n   * Total Tagihan = 95.000 + 10.000 - 20.000 = **85.000**\n\n85.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 1,
+  "pass_rate": 1.0
+}

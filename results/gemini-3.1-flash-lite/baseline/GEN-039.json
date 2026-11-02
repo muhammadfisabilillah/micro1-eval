@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-039",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "Semua item kena diskon 10%. Aturan pembulatan: harga final MASING-MASING item dibulatkan KE BAWAH (floor) ke rupiah penuh, BARU dijumlahkan. Harga: 23.999, 53.555, 66.777. Hitung total tagihan final (jawab angka saja).",
+  "expected": 129897.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'floor_per_item', shift harga x1.0. Expected = 129.897. Floor per item SEBELUM penjumlahan, bukan floor dari total.",
+  "category": "rounding (floor per item)",
+  "scenario": "floor_per_item",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 129897.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.181811699992977,
+      "raw": "Berikut adalah langkah-langkah perhitungan berdasarkan aturan yang diberikan:\n\n1. **Item 1 (23.999):**\n   - Diskon 10% = 2.399,9\n   - Harga setelah diskon = 23.999 - 2.399,9 = 21.599,1\n   - Pembulatan ke bawah (floor) = 21.599\n\n2. **Item 2 (53.555):**\n   - Diskon 10% = 5.355,5\n   - Harga setelah diskon = 53.555 - 5.355,5 = 48.199,5\n   - Pembulatan ke bawah (floor) = 48.199\n\n3. **Item 3 (66.777):**\n   - Diskon 10% = 6.677,7\n   - Harga setelah diskon = 66.777 - 6.677,7 = 60.099,3\n   - Pembulatan ke bawah (floor) = 60.099\n\n4. **Total Tagihan:**\n   - 21.599 + 48.199 + 60.099 = 129.897\n\n129.897",
+      "error": null
+    },
+    {
+      "run": 2,
+      "actual": 129897.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.6597602999827359,
+      "raw": "Berikut adalah langkah-langkah perhitungan berdasarkan aturan yang diberikan:\n\n1. **Item 1 (23.999):**\n   - Diskon 10% = 2.399,9\n   - Harga setelah diskon = 23.999 - 2.399,9 = 21.599,1\n   - Pembulatan ke bawah (floor) = 21.599\n\n2. **Item 2 (53.555):**\n   - Diskon 10% = 5.355,5\n   - Harga setelah diskon = 53.555 - 5.355,5 = 48.199,5\n   - Pembulatan ke bawah (floor) = 48.199\n\n3. **Item 3 (66.777):**\n   - Diskon 10% = 6.677,7\n   - Harga setelah diskon = 66.777 - 6.677,7 = 60.099,3\n   - Pembulatan ke bawah (floor) = 60.099\n\n4. **Total Tagihan:**\n   - 21.599 + 48.199 + 60.099 = 129.897\n\n129.897",
+      "error": null
+    },
+    {
+      "run": 3,
+      "actual": 129897.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.1142150999803562,
+      "raw": "Berikut adalah langkah-langkah perhitungan berdasarkan aturan yang diberikan:\n\n1. **Item 1 (23.999):**\n   - Diskon 10% = 2.399,9\n   - Harga setelah diskon = 23.999 - 2.399,9 = 21.599,1\n   - Pembulatan ke bawah (floor) = 21.599\n\n2. **Item 2 (53.555):**\n   - Diskon 10% = 5.355,5\n   - Harga setelah diskon = 53.555 - 5.355,5 = 48.199,5\n   - Pembulatan ke bawah (floor) = 48.199\n\n3. **Item 3 (66.777):**\n   - Diskon 10% = 6.677,7\n   - Harga setelah diskon = 66.777 - 6.677,7 = 60.099,3\n   - Pembulatan ke bawah (floor) = 60.099\n\n4. **Total Tagihan:**\n   - 21.599 + 48.199 + 60.099 = 129.897\n\n129.897",
+      "error": null
+    }
+  ],
+  "passed_runs": 3,
+  "pass_rate": 1.0
+}

@@ -1,0 +1,20 @@
+{
+  "case_id": "TC-005",
+  "model": "openrouter/free",
+  "prompt": "Aturan gratis ongkir: pengiriman menjadi GRATIS hanya jika subtotal SETELAH diskon/voucher lebih besar dari 100.000. Jika tidak memenuhi, ongkir 20.000 tetap dibayar. Seorang pelanggan membeli 1 Jaket (90.000) dan 1 Tas (60.000), lalu memakai voucher potongan 60.000. Hitung total tagihan akhir termasuk ongkir sesuai aturan (jawab angka saja, tanpa penjelasan).",
+  "expected": 110000.0,
+  "rules": "Subtotal = 150.000, tapi cek dilakukan pada SETELAH voucher: 150.000 - 60.000 = 90.000, dan 90.000 LEBIH KECIL dari 100.000, jadi ongkir TIDAK gratis. Kesalahan umum AI: mengira subtotal 150.000 sudah memenuhi syarat sehingga menjawab 90.000 tanpa ongkir. Jawaban benar: 90.000 + 20.000 = 110.000.",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 110000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 2.068445100012468,
+      "raw": "110000",
+      "error": null
+    }
+  ],
+  "passed_runs": 1,
+  "pass_rate": 1.0
+}

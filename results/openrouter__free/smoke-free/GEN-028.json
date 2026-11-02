@@ -1,0 +1,20 @@
+{
+  "case_id": "GEN-028",
+  "model": "openrouter/free",
+  "prompt": "Gratis ongkir hanya jika subtotal SETELAH diskon/voucher lebih besar dari 120.000; jika tidak, ongkir 25.000 tetap dibayar. Yang jualan Speaker (kategori 'Elektronik') seharga 120.000, Kamera (kategori 'Elektronik') seharga 70.000 lalu memakai voucher potongan 50.000. Hitung total tagihan akhir termasuk ongkir sesuai aturan (jawab angka saja).",
+  "expected": 140000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'free_shipping_after_voucher', shift harga x1.0. Expected = 140.000. Setelah voucher 140.000 > 120.000 → ongkir GRATIS.",
+  "runs": [
+    {
+      "run": 1,
+      "actual": null,
+      "passed": false,
+      "attempts": 5,
+      "duration_s": 80.40888790000463,
+      "raw": "",
+      "error": "429/5xx setelah 5 percobaan: Error code: 429 - Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day"
+    }
+  ],
+  "passed_runs": 0,
+  "pass_rate": 0.0
+}

@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-038",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "Semua item kena diskon 12.5%. Aturan pembulatan: harga final MASING-MASING item dibulatkan KE BAWAH (floor) ke rupiah penuh, BARU dijumlahkan. Harga: 31.998, 91.110, 155.554. Hitung total tagihan final (jawab angka saja).",
+  "expected": 243828.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'floor_per_item', shift harga x2.0. Expected = 243.828. Floor per item SEBELUM penjumlahan, bukan floor dari total.",
+  "category": "rounding (floor per item)",
+  "scenario": "floor_per_item",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 243828.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.9068185999931302,
+      "raw": "Berikut adalah langkah-langkah perhitungan berdasarkan aturan yang diberikan:\n\n1. **Menghitung diskon 12,5% (atau 0,125) untuk setiap item:**\n   * Item 1: 31.998 × 0,125 = 3.999,75\n   * Item 2: 91.110 × 0,125 = 11.388,75\n   * Item 3: 155.554 × 0,125 = 19.444,25\n\n2. **Menghitung harga setelah diskon (Harga Awal - Diskon):**\n   * Item 1: 31.998 - 3.999,75 = 27.998,25\n   * Item 2: 91.110 - 11.388,75 = 79.721,25\n   * Item 3: 155.554 - 19.444,25 = 136.109,75\n\n3. **Menerapkan aturan pembulatan ke bawah (floor) untuk masing-masing item:**\n   * Item 1: floor(27.998,25) = 27.998\n   * Item 2: floor(79.721,25) = 79.721\n   * Item 3: floor(136.109,75) = 136.109\n\n4. **Menjumlahkan hasil pembulatan:**\n   * 27.998 + 79.721 + 136.109 = 243.828\n\n243.828",
+      "error": null
+    },
+    {
+      "run": 2,
+      "actual": 243828.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.739588199998252,
+      "raw": "Berikut adalah langkah-langkah perhitungan berdasarkan aturan yang diberikan:\n\n1. **Menghitung diskon 12,5% (atau 0,125) untuk setiap item:**\n   * Item 1: 31.998 × 0,125 = 3.999,75\n   * Item 2: 91.110 × 0,125 = 11.388,75\n   * Item 3: 155.554 × 0,125 = 19.444,25\n\n2. **Menghitung harga setelah diskon (Harga Awal - Diskon):**\n   * Item 1: 31.998 - 3.999,75 = 27.998,25\n   * Item 2: 91.110 - 11.388,75 = 79.721,25\n   * Item 3: 155.554 - 19.444,25 = 136.109,75\n\n3. **Menerapkan aturan pembulatan ke bawah (floor) untuk masing-masing item:**\n   * Item 1: floor(27.998,25) = 27.998\n   * Item 2: floor(79.721,25) = 79.721\n   * Item 3: floor(136.109,75) = 136.109\n\n4. **Menjumlahkan hasil pembulatan:**\n   * 27.998 + 79.721 + 136.109 = 243.828\n\n243.828",
+      "error": null
+    },
+    {
+      "run": 3,
+      "actual": 243828.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.9669023000169545,
+      "raw": "Berikut adalah langkah-langkah perhitungan berdasarkan aturan yang diberikan:\n\n1. **Menghitung diskon 12,5% (atau 0,125) untuk setiap item:**\n   * Item 1: 31.998 × 0,125 = 3.999,75\n   * Item 2: 91.110 × 0,125 = 11.388,75\n   * Item 3: 155.554 × 0,125 = 19.444,25\n\n2. **Menghitung harga setelah diskon (Harga Awal - Diskon):**\n   * Item 1: 31.998 - 3.999,75 = 27.998,25\n   * Item 2: 91.110 - 11.388,75 = 79.721,25\n   * Item 3: 155.554 - 19.444,25 = 136.109,75\n\n3. **Menerapkan aturan pembulatan ke bawah (floor) untuk masing-masing item:**\n   * Item 1: floor(27.998,25) = 27.998\n   * Item 2: floor(79.721,25) = 79.721\n   * Item 3: floor(136.109,75) = 136.109\n\n4. **Menjumlahkan hasil pembulatan:**\n   * 27.998 + 79.721 + 136.109 = 243.828\n\n243.828",
+      "error": null
+    }
+  ],
+  "passed_runs": 3,
+  "pass_rate": 1.0
+}

@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-010",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "Aturan EKSKLUSIF: voucher potongan 40.000 dan diskon member 25% tidak boleh digabung; sistem otomatis memilih keuntungan terbesar bagi pelanggan. Seorang member membeli barang dengan subtotal 180.000 dan hendak memakai voucher. Hitung total akhir (jawab angka saja).",
+  "expected": 135000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'exclusive', shift harga x1.0. Expected = 135.000. Keuntungan member 45.000 vs voucher 40.000; pilih yang terbesar.",
+  "category": "exclusive-selection",
+  "scenario": "exclusive",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 135000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.685320499993395,
+      "raw": "Berikut adalah langkah-langkah perhitungan untuk menentukan keuntungan terbesar bagi pelanggan:\n\n1. **Opsi 1 (Voucher Potongan):**\n   Subtotal 180.000 - 40.000 = 140.000\n\n2. **Opsi 2 (Diskon Member 25%):**\n   Diskon = 25% x 180.000 = 45.000\n   Subtotal 180.000 - 45.000 = 135.000\n\n3. **Perbandingan:**\n   Sistem memilih keuntungan terbesar, yaitu diskon member sebesar 45.000 (karena 45.000 > 40.000).\n\n4. **Total Akhir:**\n   180.000 - 45.000 = 135.000\n\n135.000",
+      "error": null
+    },
+    {
+      "run": 2,
+      "actual": 135000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 6.616545299999416,
+      "raw": "Berikut adalah langkah-langkah perhitungan untuk menentukan keuntungan terbesar bagi pelanggan:\n\n1. **Opsi 1 (Voucher Potongan):**\n   Subtotal 180.000 - 40.000 = 140.000\n\n2. **Opsi 2 (Diskon Member 25%):**\n   Diskon = 25% x 180.000 = 45.000\n   Subtotal 180.000 - 45.000 = 135.000\n\n3. **Perbandingan:**\n   Sistem memilih keuntungan terbesar, yaitu diskon member sebesar 45.000 (karena 45.000 > 40.000).\n\n4. **Total Akhir:**\n   180.000 - 45.000 = 135.000\n\n135.000",
+      "error": null
+    },
+    {
+      "run": 3,
+      "actual": 135000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.3282770000223536,
+      "raw": "Berikut adalah langkah-langkah perhitungan untuk menentukan keuntungan terbesar bagi pelanggan:\n\n1. **Opsi 1 (Voucher Potongan):**\n   Subtotal 180.000 - 40.000 = 140.000\n\n2. **Opsi 2 (Diskon Member 25%):**\n   Diskon = 25% x 180.000 = 45.000\n   Subtotal 180.000 - 45.000 = 135.000\n\n3. **Perbandingan:**\n   Sistem memilih keuntungan terbesar, yaitu diskon member sebesar 45.000 (karena 45.000 > 40.000).\n\n4. **Total Akhir:**\n   180.000 - 45.000 = 135.000\n\n135.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 3,
+  "pass_rate": 1.0
+}

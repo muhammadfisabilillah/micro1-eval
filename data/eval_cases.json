@@ -1,0 +1,50 @@
+[
+  {
+    "id": "TC-001",
+    "prompt": "Sebuah toko online menerapkan diskon BERTINGKAT. Aturan: (1) Member mendapat diskon 15% jika subtotal belanja > 500.000. (2) Selain itu, semua produk dengan kategori 'Elektronik' mendapat diskon tambahan 10% dari harga jual item tersebut. Kondisi: pelanggan adalah member, membeli 1 TV kategori 'Elektronik' seharga 2.000.000 dan 1 Buku seharga 100.000. Hitung grand total yang harus dibayar (jawab angka saja, tanpa penjelasan).",
+    "expected_output": 1585000.0,
+    "rules": "Diskon member 15% berlaku karena subtotal 2.100.000 > 500.000. Diskon elektronik 10% dihitung dari harga item Elektronik saja (2.000.000 * 10% = 200.000), bukan dari subtotal. Diskon bertingkat dihitung berurutan: 2.100.000 - 315.000 - 200.000 = 1.585.000."
+  },
+  {
+    "id": "TC-002",
+    "prompt": "Toko menerapkan aturan EKSKLUSIF: Voucher potongan 50.000 dan Diskon Member 10% TIDAK BOLEH digabungkan dalam satu transaksi. Sistem otomatis memilih diskon dengan keuntungan TERBESAR bagi pelanggan. Seorang member membeli barang dengan subtotal 300.000 dan ingin memakai voucher. Hitung total akhir yang harus dibayar (jawab angka saja, tanpa penjelasan).",
+    "expected_output": 250000.0,
+    "rules": "Aturan eksklusif: hanya boleh pilih satu. Diskon member = 10% x 300.000 = 30.000; Voucher = 50.000. Karena keuntungan voucher lebih besar, voucher yang dipakai: 300.000 - 50.000 = 250.000. AI yang keliru akan menggabungkan keduanya atau memilih diskon member."
+  },
+  {
+    "id": "TC-003",
+    "prompt": "Voucher potongan 25.000 hanya berlaku jika TOTAL BELANJA (subtotal saja, TIDAK termasuk biaya pengiriman) minimal 100.000, dan potongan hanya berlaku pada subtotal. Seorang pelanggan membeli 1 Sepatu (35.000), 1 Topi (55.000), dengan biaya pengiriman 15.000. Hitung total tagihan akhir (subtotal + pengiriman - voucher jika syarat terpenuhi). Jawab angka saja.",
+    "expected_output": 105000.0,
+    "rules": "Subtotal = 35.000 + 55.000 = 90.000 (tanpa ongkir). Karena 90.000 < 100.000, syarat minimum TIDAK terpenuhi meskipun (90.000 + 15.000 = 105.000) melebihi 100.000, maka voucher tidak berlaku. Total akhir = 90.000 + 15.000 (ongkir tetap dibayar) = 105.000."
+  },
+  {
+    "id": "TC-004",
+    "prompt": "Ketentuan pajak toko: PPN 11% WAJIB dihitung dari harga SETELAH semua diskon, bukan dari harga normal. Seorang member (diskon member 10% untuk semua item) membeli 1 item A seharga 200.000 dan 1 item B seharga 300.000. Hitung total tagihan akhir yang harus dibayar termasuk PPN (jawab angka saja, tanpa penjelasan).",
+    "expected_output": 499500.0,
+    "rules": "Diskon member dulu: subtotal 500.000 - 10% (50.000) = 450.000. Lalu PPN 11% dari harga setelah diskon: 450.000 * 1,11 = 499.500. Kesalahan umum AI: menghitung PPN dari 500.000 (500.000 - 50.000 diskon + 55.000 PPN = 505.000) sehingga hasilnya lebih besar 5.500."
+  },
+  {
+    "id": "TC-005",
+    "prompt": "Aturan gratis ongkir: pengiriman menjadi GRATIS hanya jika subtotal SETELAH diskon/voucher lebih besar dari 100.000. Jika tidak memenuhi, ongkir 20.000 tetap dibayar. Seorang pelanggan membeli 1 Jaket (90.000) dan 1 Tas (60.000), lalu memakai voucher potongan 60.000. Hitung total tagihan akhir termasuk ongkir sesuai aturan (jawab angka saja, tanpa penjelasan).",
+    "expected_output": 110000.0,
+    "rules": "Subtotal = 150.000, tapi cek dilakukan pada SETELAH voucher: 150.000 - 60.000 = 90.000, dan 90.000 LEBIH KECIL dari 100.000, jadi ongkir TIDAK gratis. Kesalahan umum AI: mengira subtotal 150.000 sudah memenuhi syarat sehingga menjawab 90.000 tanpa ongkir. Jawaban benar: 90.000 + 20.000 = 110.000."
+  },
+  {
+    "id": "TC-006",
+    "prompt": "Promo: VOUCHER CASHBACK 10% hanya berlaku untuk produk dengan KATEGORI 'Elektronik' (cashback dihitung dari subtotal item Elektronik saja, bukan seluruh belanja). Pelanggan membeli: (1) TV kategori 'Elektronik' 500.000, (2) Buku berjudul 'Elektronik untuk Pemula' kategori 'Buku' seharga 100.000, dan (3) Sprei kategori 'Rumah Tangga' seharga 100.000. HITUNG total yang harus dibayar setelah cashback diperhitungkan (jawab angka saja, tanpa penjelasan).",
+    "expected_output": 650000.0,
+    "rules": "Hanya TV yang kategorinya 'Elektronik' sehingga cashback = 10% * 500.000 = 50.000. Buku berjudul 'Elektronik untuk Pemula' TETAP kategori 'Buku', jadi TIDAK dapat cashback (jebakan nama produk). Total = (500.000 + 100.000 + 100.000) - 50.000 = 650.000. Kesalahan umum AI: menghitung cashback 10% * 600.000 = 60.000 sehingga menjawab 640.000."
+  },
+  {
+    "id": "TC-007",
+    "prompt": "Aturan pembulatan toko: setiap item diberi diskon 12,5%, lalu harga final MASING-MASING item dibulatkan KE BAWAH (floor) ke rupiah penuh, BARU dijumlahkan. Belanja: Item A 15.999, Item B 45.555, Item C 77.777 (semua kena diskon 12,5%). Hitung total tagihan final sesuai aturan pembulatan (jawab angka saja, tanpa penjelasan).",
+    "expected_output": 121913.0,
+    "rules": "Item A: 15.999 * 0,875 = 13.999,125 -> floor = 13.999. Item B: 45.555 * 0,875 = 39.860,625 -> floor = 39.860. Item C: 77.777 * 0,875 = 68.054,875 -> floor = 68.054. Total = 13.999 + 39.860 + 68.054 = 121.913. Kesalahan umum AI: menjumlahkan dulu barulah dibulatkan (139.331 * 0,875 = 121.914,625 -> 121.914 atau 121.915), urutan ini menghasilkan selisih 1-2 rupiah."
+  },
+  {
+    "id": "TC-008",
+    "prompt": "Aturan poin reward: poin boleh dipakai sebagai potongan (1 poin = Rp1), TAPI maksimal sebanyak 50% dari total harga SETELAH diskon dan SEBELUM poin. Pelanggan memiliki 80.000 poin. Belanja: subtotal 100.000, lalu diskon member 10% diterapkan. Hitung total akhir yang benar-benar berupa uang yang harus dibayar dalam rupiah setelah aturan poin (jawab angka saja, tanpa penjelasan).",
+    "expected_output": 45000.0,
+    "rules": "Total harga setelah diskon = 100.000 - 10% = 90.000. Batas maksimal poin = 50% * 90.000 = 45.000, meskipun pelanggan memiliki 80.000 poin, yang bisa dipakai HANYA 45.000. Kesalahan umum AI: menggunakan 80.000 poin (hasil 10.000) atau 50% dari poinnya sendiri (40.000, hasil 50.000). Jawaban benar: 90.000 - 45.000 = 45.000."
+  }
+]

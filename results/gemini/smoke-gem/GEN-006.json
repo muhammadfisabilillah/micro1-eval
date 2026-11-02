@@ -1,0 +1,20 @@
+{
+  "case_id": "GEN-006",
+  "model": "gemini",
+  "prompt": "Toko menerapkan diskon BERTINGKAT. Aturan: (1) member mendapat diskon 12% jika subtotalnya lebih dari 1.000.000; (2) semua produk kategori 'Elektronik' mendapat diskon TAMBAHAN 15% dari harga jual item tersebut. Pelanggan member membeli Laptop (kategori 'Elektronik') seharga 3.000.000, Sepatu (kategori 'Fashion') seharga 400.000. Hitung grand total yang dibayar (jawab angka saja).",
+  "expected": 5084000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tiered_disc', shift harga x2.0. Expected = 5.084.000. Subtotal 6.800.000; diskon member 816.000; ekstra kategori 900.000.",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 2596000.0,
+      "passed": false,
+      "attempts": 1,
+      "duration_s": 19.547878999990644,
+      "raw": "Berikut adalah ringkasan perhitungan langkah demi langkah:\n\n1. **Hitung Subtotal Awal:**\n   * Laptop (Elektronik): 3.000.000\n   * Sepatu (Fashion): 400.000\n   * Total Subtotal Awal = 3.000.000 + 400.000 = 3.400.000\n\n2. **Hitung Diskon Kategori (Elektronik 15%):**\n   * Diskon Laptop = 15% x 3.000.000 = 450.000\n   * Harga Laptop setelah diskon kategori = 3.000.000 - 450.000 = 2.550.000\n   * Harga Sepatu = 400.000 (tidak ada diskon kategori)\n   * Subtotal Setelah Diskon Kategori = 2.550.000 + 400.000 = 2.950.000\n\n3. **Hitung Diskon Member (12%):**\n   * Karena subtotal awal (3.400.000) maupun subtotal berjalan (2.950.000) lebih dari 1.000.000, pelanggan berhak mendapatkan diskon member sebesar 12%.\n   * Diskon Member = 12% x 2.950.000 = 354.000\n\n4. **Hitung Grand Total:**\n   * Grand Total = 2.950.000 - 354.000 = 2.596.000\n\n2.596.000",
+      "error": "Expected: 5084000.00, Actual: 2596000.00, Selisih: 2488000.00 (melebihi toleransi 0.01)"
+    }
+  ],
+  "passed_runs": 0,
+  "pass_rate": 0.0
+}

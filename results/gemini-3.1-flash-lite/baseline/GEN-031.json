@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-031",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "Promo cashback 10% HANYA untuk produk kategori 'Elektronik' (dihitung dari subtotal item kategori tersebut saja). Pelanggan membeli: TV (kategori 'Elektronik') seharga 500.000, Elektronik untuk Pemula (kategori 'Buku') seharga 100.000, Sprei (kategori 'Rumah Tangga') seharga 100.000. Hitung total yang harus dibayar setelah cashback (jawab angka saja).",
+  "expected": 650000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'cashback_category_trap', shift harga x1.0. Expected = 650.000. Cashback hanya dari item kategori 'Elektronik' (500.000 x 10%); nama produk tidak berpengaruh.",
+  "category": "category-binding (nama produk vs kategori)",
+  "scenario": "cashback_category_trap",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 650000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 7.992665400000988,
+      "raw": "Berikut adalah langkah-langkah perhitungan cashback:\n\n1. **Identifikasi item kategori 'Elektronik':**\n   - TV: 500.000 (Termasuk kategori Elektronik)\n   - Elektronik untuk Pemula: 100.000 (Kategori Buku, tidak termasuk)\n   - Sprei: 100.000 (Kategori Rumah Tangga, tidak termasuk)\n\n2. **Hitung subtotal kategori 'Elektronik':**\n   - Hanya TV = 500.000\n\n3. **Hitung nilai cashback:**\n   - 10% dari 500.000 = 50.000\n\n4. **Hitung total belanja awal:**\n   - 500.000 + 100.000 + 100.000 = 700.000\n\n5. **Hitung total yang harus dibayar setelah cashback:**\n   - 700.000 - 50.000 = 650.000\n\n650.000",
+      "error": null
+    },
+    {
+      "run": 2,
+      "actual": 650000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.8886789999960456,
+      "raw": "Berikut adalah langkah-langkah perhitungan cashback:\n\n1. **Identifikasi item kategori 'Elektronik':**\n   - TV: 500.000 (Termasuk kategori Elektronik)\n   - Elektronik untuk Pemula: 100.000 (Kategori Buku, tidak termasuk)\n   - Sprei: 100.000 (Kategori Rumah Tangga, tidak termasuk)\n\n2. **Hitung subtotal kategori 'Elektronik':**\n   - Hanya TV = 500.000\n\n3. **Hitung nilai cashback:**\n   - 10% dari 500.000 = 50.000\n\n4. **Hitung total belanja awal:**\n   - 500.000 + 100.000 + 100.000 = 700.000\n\n5. **Hitung total yang harus dibayar setelah cashback:**\n   - 700.000 - 50.000 = 650.000\n\n650.000",
+      "error": null
+    },
+    {
+      "run": 3,
+      "actual": 650000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.7980956000101287,
+      "raw": "Berikut adalah langkah-langkah perhitungan cashback:\n\n1. **Identifikasi item kategori 'Elektronik':**\n   - TV: 500.000 (Termasuk kategori Elektronik)\n   - Elektronik untuk Pemula: 100.000 (Kategori Buku, tidak termasuk)\n   - Sprei: 100.000 (Kategori Rumah Tangga, tidak termasuk)\n\n2. **Hitung subtotal kategori 'Elektronik':**\n   - Hanya TV = 500.000\n\n3. **Hitung nilai cashback:**\n   - 10% dari 500.000 = 50.000\n\n4. **Hitung total belanja awal:**\n   - 500.000 + 100.000 + 100.000 = 700.000\n\n5. **Hitung total yang harus dibayar setelah cashback:**\n   - 700.000 - 50.000 = 650.000\n\n650.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 3,
+  "pass_rate": 1.0
+}

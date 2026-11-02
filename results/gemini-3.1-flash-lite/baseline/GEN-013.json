@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-013",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "Voucher potongan 25.000 berlaku hanya jika subtotal (TIDAK termasuk ongkir) minimal 100.000. Pelanggan membeli Sepatu (kategori 'Fashion') seharga 35.000, Topi (kategori 'Fashion') seharga 55.000 dengan ongkir 15.000. Hitung total tagihan akhir (subtotal + ongkir - voucher jika syarat terpenuhi; jawab angka saja).",
+  "expected": 105000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'min_subtotal_voucher', shift harga x1.0. Expected = 105.000. Subtotal 90.000 < minimum 100.000 → voucher GAGAL.",
+  "category": "boundary (cek subtotal tanpa ongkir)",
+  "scenario": "min_subtotal_voucher",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 105000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.9097267999895848,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan:\n\n1. **Menghitung Subtotal:**\n   Harga Sepatu (35.000) + Harga Topi (55.000) = 90.000.\n\n2. **Evaluasi Syarat Voucher:**\n   Syarat minimal subtotal adalah 100.000. Karena subtotal saat ini adalah 90.000, maka syarat tidak terpenuhi. Voucher tidak dapat digunakan.\n\n3. **Menghitung Total Tagihan:**\n   Subtotal (90.000) + Ongkir (15.000) = 105.000.\n\n105.000",
+      "error": null
+    },
+    {
+      "run": 2,
+      "actual": 105000.0,
+      "passed": true,
+      "attempts": 3,
+      "duration_s": 94.27330770000117,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan:\n\n1. **Menghitung Subtotal:**\n   Harga Sepatu (35.000) + Harga Topi (55.000) = 90.000.\n\n2. **Evaluasi Syarat Voucher:**\n   Syarat minimal subtotal adalah 100.000. Karena subtotal saat ini adalah 90.000, maka syarat tidak terpenuhi. Voucher tidak dapat digunakan.\n\n3. **Menghitung Total Tagihan:**\n   Subtotal (90.000) + Ongkir (15.000) = 105.000.\n\n105.000",
+      "error": null
+    },
+    {
+      "run": 3,
+      "actual": 105000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.2318081999837887,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan:\n\n1. **Menghitung Subtotal:**\n   Harga Sepatu (35.000) + Harga Topi (55.000) = 90.000.\n\n2. **Evaluasi Syarat Voucher:**\n   Syarat minimal subtotal adalah 100.000. Karena subtotal saat ini adalah 90.000, maka syarat tidak terpenuhi. Voucher tidak dapat digunakan.\n\n3. **Menghitung Total Tagihan:**\n   Subtotal (90.000) + Ongkir (15.000) = 105.000.\n\n105.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 3,
+  "pass_rate": 1.0
+}

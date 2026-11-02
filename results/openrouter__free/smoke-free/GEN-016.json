@@ -1,0 +1,20 @@
+{
+  "case_id": "GEN-016",
+  "model": "openrouter/free",
+  "prompt": "Voucher potongan 20.000 berlaku hanya jika subtotal (TIDAK termasuk ongkir) minimal 90.000. Pelanggan membeli Kaos (kategori 'Fashion') seharga 50.000, Sarung Tangan (kategori 'Fashion') seharga 45.000 dengan ongkir 10.000. Hitung total tagihan akhir (subtotal + ongkir - voucher jika syarat terpenuhi; jawab angka saja).",
+  "expected": 85000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'min_subtotal_voucher', shift harga x1.0. Expected = 85.000. Subtotal 95.000 >= minimum 90.000 → voucher BERLAKU.",
+  "runs": [
+    {
+      "run": 1,
+      "actual": null,
+      "passed": false,
+      "attempts": 5,
+      "duration_s": 79.14132890000474,
+      "raw": "",
+      "error": "429/5xx setelah 5 percobaan: Error code: 429 - Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day"
+    }
+  ],
+  "passed_runs": 0,
+  "pass_rate": 0.0
+}

@@ -1,0 +1,34 @@
+{
+  "generated_at": "2026-10-29T13:40:26.925918+00:00",
+  "model": "openrouter/free",
+  "runs_per_case": 1,
+  "total_runs": 8,
+  "passed_runs": 7,
+  "accuracy": 0.875,
+  "cases": {
+    "TC-001": {
+      "pass_rate": 0.0
+    },
+    "TC-002": {
+      "pass_rate": 1.0
+    },
+    "TC-003": {
+      "pass_rate": 1.0
+    },
+    "TC-004": {
+      "pass_rate": 1.0
+    },
+    "TC-005": {
+      "pass_rate": 1.0
+    },
+    "TC-006": {
+      "pass_rate": 1.0
+    },
+    "TC-007": {
+      "pass_rate": 1.0
+    },
+    "TC-008": {
+      "pass_rate": 1.0
+    }
+  }
+}

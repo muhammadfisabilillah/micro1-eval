@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "deskripsi": "Schema terstruktur kasus eval. generator.py membuat 2 paramset x N shift per template. Nilai harga (items/*.price, subtotal) digeser sesuai 'shift'; parameter promo (voucher, threshold, poin milik user, ongkir) sengaja TIDAK ikut digeser agar decision-path bisa berubah menjadi kasus baru yang tetap valid (expected dihitung reference.py).",
+    "kategori_kegagalan": ["ordering", "exclusive-selection", "boundary", "tax-base", "category-binding", "rounding", "points-cap"]
+  },
+  "templates": [
+    {
+      "scenario": "tiered_disc",
+      "category": "ordering + category-binding",
+      "shifts": [1.0, 1.2, 2.0],
+      "paramsets": [
+        {
+          "items": [
+            {"name": "TV", "category": "Elektronik", "price": 2000000},
+            {"name": "Buku", "category": "Buku", "price": 100000}
+          ],
+          "member": true,
+          "member_threshold": 500000,
+          "member_pct": 0.15,
+          "category": "Elektronik",
+          "category_extra_pct": 0.10
+        },
+        {
+          "items": [
+            {"name": "Laptop", "category": "Elektronik", "price": 3000000},
+            {"name": "Sepatu", "category": "Fashion", "price": 400000}
+          ],
+          "member": true,
+          "member_threshold": 1000000,
+          "member_pct": 0.12,
+          "category": "Elektronik",
+          "category_extra_pct": 0.15
+        }
+      ]
+    },
+    {
+      "scenario": "exclusive",
+      "category": "exclusive-selection",
+      "shifts": [1.0, 1.2, 2.0],
+      "paramsets": [
+        {
+          "items": [
+            {"name": "Paket Sabun", "category": "RT", "price": 300000}
+          ],
+          "member": true,
+          "member_pct": 0.10,
+          "voucher": 50000,
+          "hint": "member mau memakai voucher"
+        },
+        {
+          "items": [
+            {"name": "Meja Belajar", "category": "Furnitur", "price": 180000}
+          ],
+          "member": true,
+          "member_pct": 0.25,
+          "voucher": 40000,
+          "hint": "member mau memakai voucher"
+        }
+      ]
+    },
+    {
+      "scenario": "min_subtotal_voucher",
+      "category": "boundary (cek subtotal tanpa ongkir)",
+      "shifts": [1.0, 1.2, 2.0],
+      "paramsets": [
+        {
+          "items": [
+            {"name": "Sepatu", "category": "Fashion", "price": 35000},
+            {"name": "Topi", "category": "Fashion", "price": 55000}
+          ],
+          "shipping": 15000,
+          "voucher": 25000,
+          "min_subtotal": 100000
+        },
+        {
+          "items": [
+            {"name": "Kaos", "category": "Fashion", "price": 50000},
+            {"name": "Sarung Tangan", "category": "Fashion", "price": 45000}
+          ],
+          "shipping": 10000,
+          "voucher": 20000,
+          "min_subtotal": 90000
+        }
+      ]
+    },
+    {
+      "scenario": "tax_after_discount",
+      "category": "tax-base (PPN setelah diskon)",
+      "shifts": [1.0, 1.2, 2.0],
+      "paramsets": [
+        {
+          "items": [
+            {"name": "Item A", "category": "Umum", "price": 200000},
+            {"name": "Item B", "category": "Umum", "price": 300000}
+          ],
+          "member_pct": 0.10,
+          "tax_rate": 0.11
+        },
+        {
+          "items": [
+            {"name": "Kursi Kayu", "category": "Furnitur", "price": 1200000},
+            {"name": "Cicipan", "category": "Meja & Dapur", "price": 80000}
+          ],
+          "member_pct": 0.12,
+          "tax_rate": 0.11
+        }
+      ]
+    },
+    {
+      "scenario": "free_shipping_after_voucher",
+      "category": "boundary (cek setelah voucher)",
+      "shifts": [1.0, 1.2, 2.0],
+      "paramsets": [
+        {
+          "items": [
+            {"name": "Jaket", "category": "Fashion", "price": 90000},
+            {"name": "Tas", "category": "Fashion", "price": 60000}
+          ],
+          "voucher": 60000,
+          "shipping": 20000,
+          "threshold": 100000
+        },
+        {
+          "items": [
+            {"name": "Speaker", "category": "Elektronik", "price": 120000},
+            {"name": "Kamera", "category": "Elektronik", "price": 70000}
+          ],
+          "voucher": 50000,
+          "shipping": 25000,
+          "threshold": 120000
+        }
+      ]
+    },
+    {
+      "scenario": "cashback_category_trap",
+      "category": "category-binding (nama produk vs kategori)",
+      "shifts": [1.0, 1.2, 2.0],
+      "paramsets": [
+        {
+          "items": [
+            {"name": "TV", "category": "Elektronik", "price": 500000},
+            {"name": "Elektronik untuk Pemula", "category": "Buku", "price": 100000},
+            {"name": "Sprei", "category": "Rumah Tangga", "price": 100000}
+          ],
+          "category": "Elektronik",
+          "cashback_pct": 0.10
+        },
+        {
+          "items": [
+            {"name": "Speaker", "category": "Elektronik", "price": 350000},
+            {"name": "Elektronik untuk Pemula", "category": "Buku", "price": 120000},
+            {"name": "Tas", "category": "Fashion", "price": 130000}
+          ],
+          "category": "Elektronik",
+          "cashback_pct": 0.12
+        }
+      ]
+    },
+    {
+      "scenario": "floor_per_item",
+      "category": "rounding (floor per item)",
+      "shifts": [1.0, 2.0],
+      "paramsets": [
+        {
+          "items_pct": [
+            {"price": 15999, "discount_pct": 0.125},
+            {"price": 45555, "discount_pct": 0.125},
+            {"price": 77777, "discount_pct": 0.125}
+          ]
+        },
+        {
+          "items_pct": [
+            {"price": 23999, "discount_pct": 0.10},
+            {"price": 53555, "discount_pct": 0.10},
+            {"price": 66777, "discount_pct": 0.10}
+          ]
+        }
+      ]
+    },
+    {
+      "scenario": "points_cap",
+      "category": "points-cap (maks % dari total)",
+      "shifts": [1.0, 1.2, 2.0],
+      "paramsets": [
+        {
+          "subtotal": 100000,
+          "other_discount_pct": 0.10,
+          "cap_pct": 0.50,
+          "points_owned": 80000
+        },
+        {
+          "subtotal": 250000,
+          "other_discount_pct": 0.20,
+          "cap_pct": 0.40,
+          "points_owned": 90000
+        }
+      ]
+    }
+  ]
+}

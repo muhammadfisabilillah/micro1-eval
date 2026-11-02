@@ -1,0 +1,462 @@
+[
+  {
+    "id": "GEN-001",
+    "prompt": "Toko menerapkan diskon BERTINGKAT. Aturan: (1) member mendapat diskon 15% jika subtotalnya lebih dari 500.000; (2) semua produk kategori 'Elektronik' mendapat diskon TAMBAHAN 10% dari harga jual item tersebut. Pelanggan member membeli TV (kategori 'Elektronik') seharga 2.000.000, Buku (kategori 'Buku') seharga 100.000. Hitung grand total yang dibayar (jawab angka saja).",
+    "expected_output": 1585000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tiered_disc', shift harga x1.0. Expected = 1.585.000. Subtotal 2.100.000; diskon member 315.000; ekstra kategori 200.000.",
+    "category": "ordering + category-binding",
+    "scenario": "tiered_disc",
+    "paramset": 0,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-002",
+    "prompt": "Toko menerapkan diskon BERTINGKAT. Aturan: (1) member mendapat diskon 15% jika subtotalnya lebih dari 500.000; (2) semua produk kategori 'Elektronik' mendapat diskon TAMBAHAN 10% dari harga jual item tersebut. Pelanggan member membeli TV (kategori 'Elektronik') seharga 2.400.000, Buku (kategori 'Buku') seharga 120.000. Hitung grand total yang dibayar (jawab angka saja).",
+    "expected_output": 1902000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tiered_disc', shift harga x1.2. Expected = 1.902.000. Subtotal 2.520.000; diskon member 378.000; ekstra kategori 240.000.",
+    "category": "ordering + category-binding",
+    "scenario": "tiered_disc",
+    "paramset": 0,
+    "shift": 1.2
+  },
+  {
+    "id": "GEN-003",
+    "prompt": "Toko menerapkan diskon BERTINGKAT. Aturan: (1) member mendapat diskon 15% jika subtotalnya lebih dari 500.000; (2) semua produk kategori 'Elektronik' mendapat diskon TAMBAHAN 10% dari harga jual item tersebut. Pelanggan member membeli TV (kategori 'Elektronik') seharga 4.000.000, Buku (kategori 'Buku') seharga 200.000. Hitung grand total yang dibayar (jawab angka saja).",
+    "expected_output": 3170000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tiered_disc', shift harga x2.0. Expected = 3.170.000. Subtotal 4.200.000; diskon member 630.000; ekstra kategori 400.000.",
+    "category": "ordering + category-binding",
+    "scenario": "tiered_disc",
+    "paramset": 0,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-004",
+    "prompt": "Toko menerapkan diskon BERTINGKAT. Aturan: (1) member mendapat diskon 12% jika subtotalnya lebih dari 1.000.000; (2) semua produk kategori 'Elektronik' mendapat diskon TAMBAHAN 15% dari harga jual item tersebut. Pelanggan member membeli Laptop (kategori 'Elektronik') seharga 3.000.000, Sepatu (kategori 'Fashion') seharga 400.000. Hitung grand total yang dibayar (jawab angka saja).",
+    "expected_output": 2542000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tiered_disc', shift harga x1.0. Expected = 2.542.000. Subtotal 3.400.000; diskon member 408.000; ekstra kategori 450.000.",
+    "category": "ordering + category-binding",
+    "scenario": "tiered_disc",
+    "paramset": 1,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-005",
+    "prompt": "Toko menerapkan diskon BERTINGKAT. Aturan: (1) member mendapat diskon 12% jika subtotalnya lebih dari 1.000.000; (2) semua produk kategori 'Elektronik' mendapat diskon TAMBAHAN 15% dari harga jual item tersebut. Pelanggan member membeli Laptop (kategori 'Elektronik') seharga 3.600.000, Sepatu (kategori 'Fashion') seharga 480.000. Hitung grand total yang dibayar (jawab angka saja).",
+    "expected_output": 3050400.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tiered_disc', shift harga x1.2. Expected = 3.050.400. Subtotal 4.080.000; diskon member 489.600; ekstra kategori 540.000.",
+    "category": "ordering + category-binding",
+    "scenario": "tiered_disc",
+    "paramset": 1,
+    "shift": 1.2
+  },
+  {
+    "id": "GEN-006",
+    "prompt": "Toko menerapkan diskon BERTINGKAT. Aturan: (1) member mendapat diskon 12% jika subtotalnya lebih dari 1.000.000; (2) semua produk kategori 'Elektronik' mendapat diskon TAMBAHAN 15% dari harga jual item tersebut. Pelanggan member membeli Laptop (kategori 'Elektronik') seharga 6.000.000, Sepatu (kategori 'Fashion') seharga 800.000. Hitung grand total yang dibayar (jawab angka saja).",
+    "expected_output": 5084000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tiered_disc', shift harga x2.0. Expected = 5.084.000. Subtotal 6.800.000; diskon member 816.000; ekstra kategori 900.000.",
+    "category": "ordering + category-binding",
+    "scenario": "tiered_disc",
+    "paramset": 1,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-007",
+    "prompt": "Aturan EKSKLUSIF: voucher potongan 50.000 dan diskon member 10% tidak boleh digabung; sistem otomatis memilih keuntungan terbesar bagi pelanggan. Seorang member membeli barang dengan subtotal 300.000 dan hendak memakai voucher. Hitung total akhir (jawab angka saja).",
+    "expected_output": 250000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'exclusive', shift harga x1.0. Expected = 250.000. Keuntungan member 30.000 vs voucher 50.000; pilih yang terbesar.",
+    "category": "exclusive-selection",
+    "scenario": "exclusive",
+    "paramset": 0,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-008",
+    "prompt": "Aturan EKSKLUSIF: voucher potongan 50.000 dan diskon member 10% tidak boleh digabung; sistem otomatis memilih keuntungan terbesar bagi pelanggan. Seorang member membeli barang dengan subtotal 360.000 dan hendak memakai voucher. Hitung total akhir (jawab angka saja).",
+    "expected_output": 310000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'exclusive', shift harga x1.2. Expected = 310.000. Keuntungan member 36.000 vs voucher 50.000; pilih yang terbesar.",
+    "category": "exclusive-selection",
+    "scenario": "exclusive",
+    "paramset": 0,
+    "shift": 1.2
+  },
+  {
+    "id": "GEN-009",
+    "prompt": "Aturan EKSKLUSIF: voucher potongan 50.000 dan diskon member 10% tidak boleh digabung; sistem otomatis memilih keuntungan terbesar bagi pelanggan. Seorang member membeli barang dengan subtotal 600.000 dan hendak memakai voucher. Hitung total akhir (jawab angka saja).",
+    "expected_output": 540000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'exclusive', shift harga x2.0. Expected = 540.000. Keuntungan member 60.000 vs voucher 50.000; pilih yang terbesar.",
+    "category": "exclusive-selection",
+    "scenario": "exclusive",
+    "paramset": 0,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-010",
+    "prompt": "Aturan EKSKLUSIF: voucher potongan 40.000 dan diskon member 25% tidak boleh digabung; sistem otomatis memilih keuntungan terbesar bagi pelanggan. Seorang member membeli barang dengan subtotal 180.000 dan hendak memakai voucher. Hitung total akhir (jawab angka saja).",
+    "expected_output": 135000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'exclusive', shift harga x1.0. Expected = 135.000. Keuntungan member 45.000 vs voucher 40.000; pilih yang terbesar.",
+    "category": "exclusive-selection",
+    "scenario": "exclusive",
+    "paramset": 1,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-011",
+    "prompt": "Aturan EKSKLUSIF: voucher potongan 40.000 dan diskon member 25% tidak boleh digabung; sistem otomatis memilih keuntungan terbesar bagi pelanggan. Seorang member membeli barang dengan subtotal 216.000 dan hendak memakai voucher. Hitung total akhir (jawab angka saja).",
+    "expected_output": 162000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'exclusive', shift harga x1.2. Expected = 162.000. Keuntungan member 54.000 vs voucher 40.000; pilih yang terbesar.",
+    "category": "exclusive-selection",
+    "scenario": "exclusive",
+    "paramset": 1,
+    "shift": 1.2
+  },
+  {
+    "id": "GEN-012",
+    "prompt": "Aturan EKSKLUSIF: voucher potongan 40.000 dan diskon member 25% tidak boleh digabung; sistem otomatis memilih keuntungan terbesar bagi pelanggan. Seorang member membeli barang dengan subtotal 360.000 dan hendak memakai voucher. Hitung total akhir (jawab angka saja).",
+    "expected_output": 270000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'exclusive', shift harga x2.0. Expected = 270.000. Keuntungan member 90.000 vs voucher 40.000; pilih yang terbesar.",
+    "category": "exclusive-selection",
+    "scenario": "exclusive",
+    "paramset": 1,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-013",
+    "prompt": "Voucher potongan 25.000 berlaku hanya jika subtotal (TIDAK termasuk ongkir) minimal 100.000. Pelanggan membeli Sepatu (kategori 'Fashion') seharga 35.000, Topi (kategori 'Fashion') seharga 55.000 dengan ongkir 15.000. Hitung total tagihan akhir (subtotal + ongkir - voucher jika syarat terpenuhi; jawab angka saja).",
+    "expected_output": 105000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'min_subtotal_voucher', shift harga x1.0. Expected = 105.000. Subtotal 90.000 < minimum 100.000 → voucher GAGAL.",
+    "category": "boundary (cek subtotal tanpa ongkir)",
+    "scenario": "min_subtotal_voucher",
+    "paramset": 0,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-014",
+    "prompt": "Voucher potongan 25.000 berlaku hanya jika subtotal (TIDAK termasuk ongkir) minimal 100.000. Pelanggan membeli Sepatu (kategori 'Fashion') seharga 42.000, Topi (kategori 'Fashion') seharga 66.000 dengan ongkir 15.000. Hitung total tagihan akhir (subtotal + ongkir - voucher jika syarat terpenuhi; jawab angka saja).",
+    "expected_output": 98000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'min_subtotal_voucher', shift harga x1.2. Expected = 98.000. Subtotal 108.000 >= minimum 100.000 → voucher BERLAKU.",
+    "category": "boundary (cek subtotal tanpa ongkir)",
+    "scenario": "min_subtotal_voucher",
+    "paramset": 0,
+    "shift": 1.2
+  },
+  {
+    "id": "GEN-015",
+    "prompt": "Voucher potongan 25.000 berlaku hanya jika subtotal (TIDAK termasuk ongkir) minimal 100.000. Pelanggan membeli Sepatu (kategori 'Fashion') seharga 70.000, Topi (kategori 'Fashion') seharga 110.000 dengan ongkir 15.000. Hitung total tagihan akhir (subtotal + ongkir - voucher jika syarat terpenuhi; jawab angka saja).",
+    "expected_output": 170000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'min_subtotal_voucher', shift harga x2.0. Expected = 170.000. Subtotal 180.000 >= minimum 100.000 → voucher BERLAKU.",
+    "category": "boundary (cek subtotal tanpa ongkir)",
+    "scenario": "min_subtotal_voucher",
+    "paramset": 0,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-016",
+    "prompt": "Voucher potongan 20.000 berlaku hanya jika subtotal (TIDAK termasuk ongkir) minimal 90.000. Pelanggan membeli Kaos (kategori 'Fashion') seharga 50.000, Sarung Tangan (kategori 'Fashion') seharga 45.000 dengan ongkir 10.000. Hitung total tagihan akhir (subtotal + ongkir - voucher jika syarat terpenuhi; jawab angka saja).",
+    "expected_output": 85000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'min_subtotal_voucher', shift harga x1.0. Expected = 85.000. Subtotal 95.000 >= minimum 90.000 → voucher BERLAKU.",
+    "category": "boundary (cek subtotal tanpa ongkir)",
+    "scenario": "min_subtotal_voucher",
+    "paramset": 1,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-017",
+    "prompt": "Voucher potongan 20.000 berlaku hanya jika subtotal (TIDAK termasuk ongkir) minimal 90.000. Pelanggan membeli Kaos (kategori 'Fashion') seharga 60.000, Sarung Tangan (kategori 'Fashion') seharga 54.000 dengan ongkir 10.000. Hitung total tagihan akhir (subtotal + ongkir - voucher jika syarat terpenuhi; jawab angka saja).",
+    "expected_output": 104000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'min_subtotal_voucher', shift harga x1.2. Expected = 104.000. Subtotal 114.000 >= minimum 90.000 → voucher BERLAKU.",
+    "category": "boundary (cek subtotal tanpa ongkir)",
+    "scenario": "min_subtotal_voucher",
+    "paramset": 1,
+    "shift": 1.2
+  },
+  {
+    "id": "GEN-018",
+    "prompt": "Voucher potongan 20.000 berlaku hanya jika subtotal (TIDAK termasuk ongkir) minimal 90.000. Pelanggan membeli Kaos (kategori 'Fashion') seharga 100.000, Sarung Tangan (kategori 'Fashion') seharga 90.000 dengan ongkir 10.000. Hitung total tagihan akhir (subtotal + ongkir - voucher jika syarat terpenuhi; jawab angka saja).",
+    "expected_output": 180000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'min_subtotal_voucher', shift harga x2.0. Expected = 180.000. Subtotal 190.000 >= minimum 90.000 → voucher BERLAKU.",
+    "category": "boundary (cek subtotal tanpa ongkir)",
+    "scenario": "min_subtotal_voucher",
+    "paramset": 1,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-019",
+    "prompt": "PPN dikenakan 11% dan WAJIB dihitung dari harga SETELAH diskon, bukan harga normal. Diskon member 10% berlaku untuk semua item. Pelanggan membeli Item A (kategori 'Umum') seharga 200.000, Item B (kategori 'Umum') seharga 300.000. Hitung total tagihan akhir termasuk PPN (jawab angka saja).",
+    "expected_output": 499500.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tax_after_discount', shift harga x1.0. Expected = 499.500. Setelah diskon 450.000 → PPN 11% → 499.500.",
+    "category": "tax-base (PPN setelah diskon)",
+    "scenario": "tax_after_discount",
+    "paramset": 0,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-020",
+    "prompt": "PPN dikenakan 11% dan WAJIB dihitung dari harga SETELAH diskon, bukan harga normal. Diskon member 10% berlaku untuk semua item. Pelanggan membeli Item A (kategori 'Umum') seharga 240.000, Item B (kategori 'Umum') seharga 360.000. Hitung total tagihan akhir termasuk PPN (jawab angka saja).",
+    "expected_output": 599400.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tax_after_discount', shift harga x1.2. Expected = 599.400. Setelah diskon 540.000 → PPN 11% → 599.400.",
+    "category": "tax-base (PPN setelah diskon)",
+    "scenario": "tax_after_discount",
+    "paramset": 0,
+    "shift": 1.2
+  },
+  {
+    "id": "GEN-021",
+    "prompt": "PPN dikenakan 11% dan WAJIB dihitung dari harga SETELAH diskon, bukan harga normal. Diskon member 10% berlaku untuk semua item. Pelanggan membeli Item A (kategori 'Umum') seharga 400.000, Item B (kategori 'Umum') seharga 600.000. Hitung total tagihan akhir termasuk PPN (jawab angka saja).",
+    "expected_output": 999000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tax_after_discount', shift harga x2.0. Expected = 999.000. Setelah diskon 900.000 → PPN 11% → 999.000.",
+    "category": "tax-base (PPN setelah diskon)",
+    "scenario": "tax_after_discount",
+    "paramset": 0,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-022",
+    "prompt": "PPN dikenakan 11% dan WAJIB dihitung dari harga SETELAH diskon, bukan harga normal. Diskon member 12% berlaku untuk semua item. Pelanggan membeli Kursi Kayu (kategori 'Furnitur') seharga 1.200.000, Cicipan (kategori 'Meja & Dapur') seharga 80.000. Hitung total tagihan akhir termasuk PPN (jawab angka saja).",
+    "expected_output": 1250304.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tax_after_discount', shift harga x1.0. Expected = 1.250.304. Setelah diskon 1.126.400 → PPN 11% → 1.250.304.",
+    "category": "tax-base (PPN setelah diskon)",
+    "scenario": "tax_after_discount",
+    "paramset": 1,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-023",
+    "prompt": "PPN dikenakan 11% dan WAJIB dihitung dari harga SETELAH diskon, bukan harga normal. Diskon member 12% berlaku untuk semua item. Pelanggan membeli Kursi Kayu (kategori 'Furnitur') seharga 1.440.000, Cicipan (kategori 'Meja & Dapur') seharga 96.000. Hitung total tagihan akhir termasuk PPN (jawab angka saja).",
+    "expected_output": 1500364.8,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tax_after_discount', shift harga x1.2. Expected = 1.500.364,80. Setelah diskon 1.351.680 → PPN 11% → 1.500.364,80.",
+    "category": "tax-base (PPN setelah diskon)",
+    "scenario": "tax_after_discount",
+    "paramset": 1,
+    "shift": 1.2
+  },
+  {
+    "id": "GEN-024",
+    "prompt": "PPN dikenakan 11% dan WAJIB dihitung dari harga SETELAH diskon, bukan harga normal. Diskon member 12% berlaku untuk semua item. Pelanggan membeli Kursi Kayu (kategori 'Furnitur') seharga 2.400.000, Cicipan (kategori 'Meja & Dapur') seharga 160.000. Hitung total tagihan akhir termasuk PPN (jawab angka saja).",
+    "expected_output": 2500608.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tax_after_discount', shift harga x2.0. Expected = 2.500.608. Setelah diskon 2.252.800 → PPN 11% → 2.500.608.",
+    "category": "tax-base (PPN setelah diskon)",
+    "scenario": "tax_after_discount",
+    "paramset": 1,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-025",
+    "prompt": "Gratis ongkir hanya jika subtotal SETELAH diskon/voucher lebih besar dari 100.000; jika tidak, ongkir 20.000 tetap dibayar. Yang jualan Jaket (kategori 'Fashion') seharga 90.000, Tas (kategori 'Fashion') seharga 60.000 lalu memakai voucher potongan 60.000. Hitung total tagihan akhir termasuk ongkir sesuai aturan (jawab angka saja).",
+    "expected_output": 110000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'free_shipping_after_voucher', shift harga x1.0. Expected = 110.000. Setelah voucher 90.000 <= 100.000 → ongkir DIBAYAR.",
+    "category": "boundary (cek setelah voucher)",
+    "scenario": "free_shipping_after_voucher",
+    "paramset": 0,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-026",
+    "prompt": "Gratis ongkir hanya jika subtotal SETELAH diskon/voucher lebih besar dari 100.000; jika tidak, ongkir 20.000 tetap dibayar. Yang jualan Jaket (kategori 'Fashion') seharga 108.000, Tas (kategori 'Fashion') seharga 72.000 lalu memakai voucher potongan 60.000. Hitung total tagihan akhir termasuk ongkir sesuai aturan (jawab angka saja).",
+    "expected_output": 120000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'free_shipping_after_voucher', shift harga x1.2. Expected = 120.000. Setelah voucher 120.000 > 100.000 → ongkir GRATIS.",
+    "category": "boundary (cek setelah voucher)",
+    "scenario": "free_shipping_after_voucher",
+    "paramset": 0,
+    "shift": 1.2
+  },
+  {
+    "id": "GEN-027",
+    "prompt": "Gratis ongkir hanya jika subtotal SETELAH diskon/voucher lebih besar dari 100.000; jika tidak, ongkir 20.000 tetap dibayar. Yang jualan Jaket (kategori 'Fashion') seharga 180.000, Tas (kategori 'Fashion') seharga 120.000 lalu memakai voucher potongan 60.000. Hitung total tagihan akhir termasuk ongkir sesuai aturan (jawab angka saja).",
+    "expected_output": 240000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'free_shipping_after_voucher', shift harga x2.0. Expected = 240.000. Setelah voucher 240.000 > 100.000 → ongkir GRATIS.",
+    "category": "boundary (cek setelah voucher)",
+    "scenario": "free_shipping_after_voucher",
+    "paramset": 0,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-028",
+    "prompt": "Gratis ongkir hanya jika subtotal SETELAH diskon/voucher lebih besar dari 120.000; jika tidak, ongkir 25.000 tetap dibayar. Yang jualan Speaker (kategori 'Elektronik') seharga 120.000, Kamera (kategori 'Elektronik') seharga 70.000 lalu memakai voucher potongan 50.000. Hitung total tagihan akhir termasuk ongkir sesuai aturan (jawab angka saja).",
+    "expected_output": 140000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'free_shipping_after_voucher', shift harga x1.0. Expected = 140.000. Setelah voucher 140.000 > 120.000 → ongkir GRATIS.",
+    "category": "boundary (cek setelah voucher)",
+    "scenario": "free_shipping_after_voucher",
+    "paramset": 1,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-029",
+    "prompt": "Gratis ongkir hanya jika subtotal SETELAH diskon/voucher lebih besar dari 120.000; jika tidak, ongkir 25.000 tetap dibayar. Yang jualan Speaker (kategori 'Elektronik') seharga 144.000, Kamera (kategori 'Elektronik') seharga 84.000 lalu memakai voucher potongan 50.000. Hitung total tagihan akhir termasuk ongkir sesuai aturan (jawab angka saja).",
+    "expected_output": 178000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'free_shipping_after_voucher', shift harga x1.2. Expected = 178.000. Setelah voucher 178.000 > 120.000 → ongkir GRATIS.",
+    "category": "boundary (cek setelah voucher)",
+    "scenario": "free_shipping_after_voucher",
+    "paramset": 1,
+    "shift": 1.2
+  },
+  {
+    "id": "GEN-030",
+    "prompt": "Gratis ongkir hanya jika subtotal SETELAH diskon/voucher lebih besar dari 120.000; jika tidak, ongkir 25.000 tetap dibayar. Yang jualan Speaker (kategori 'Elektronik') seharga 240.000, Kamera (kategori 'Elektronik') seharga 140.000 lalu memakai voucher potongan 50.000. Hitung total tagihan akhir termasuk ongkir sesuai aturan (jawab angka saja).",
+    "expected_output": 330000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'free_shipping_after_voucher', shift harga x2.0. Expected = 330.000. Setelah voucher 330.000 > 120.000 → ongkir GRATIS.",
+    "category": "boundary (cek setelah voucher)",
+    "scenario": "free_shipping_after_voucher",
+    "paramset": 1,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-031",
+    "prompt": "Promo cashback 10% HANYA untuk produk kategori 'Elektronik' (dihitung dari subtotal item kategori tersebut saja). Pelanggan membeli: TV (kategori 'Elektronik') seharga 500.000, Elektronik untuk Pemula (kategori 'Buku') seharga 100.000, Sprei (kategori 'Rumah Tangga') seharga 100.000. Hitung total yang harus dibayar setelah cashback (jawab angka saja).",
+    "expected_output": 650000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'cashback_category_trap', shift harga x1.0. Expected = 650.000. Cashback hanya dari item kategori 'Elektronik' (500.000 x 10%); nama produk tidak berpengaruh.",
+    "category": "category-binding (nama produk vs kategori)",
+    "scenario": "cashback_category_trap",
+    "paramset": 0,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-032",
+    "prompt": "Promo cashback 10% HANYA untuk produk kategori 'Elektronik' (dihitung dari subtotal item kategori tersebut saja). Pelanggan membeli: TV (kategori 'Elektronik') seharga 600.000, Elektronik untuk Pemula (kategori 'Buku') seharga 120.000, Sprei (kategori 'Rumah Tangga') seharga 120.000. Hitung total yang harus dibayar setelah cashback (jawab angka saja).",
+    "expected_output": 780000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'cashback_category_trap', shift harga x1.2. Expected = 780.000. Cashback hanya dari item kategori 'Elektronik' (600.000 x 10%); nama produk tidak berpengaruh.",
+    "category": "category-binding (nama produk vs kategori)",
+    "scenario": "cashback_category_trap",
+    "paramset": 0,
+    "shift": 1.2
+  },
+  {
+    "id": "GEN-033",
+    "prompt": "Promo cashback 10% HANYA untuk produk kategori 'Elektronik' (dihitung dari subtotal item kategori tersebut saja). Pelanggan membeli: TV (kategori 'Elektronik') seharga 1.000.000, Elektronik untuk Pemula (kategori 'Buku') seharga 200.000, Sprei (kategori 'Rumah Tangga') seharga 200.000. Hitung total yang harus dibayar setelah cashback (jawab angka saja).",
+    "expected_output": 1300000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'cashback_category_trap', shift harga x2.0. Expected = 1.300.000. Cashback hanya dari item kategori 'Elektronik' (1.000.000 x 10%); nama produk tidak berpengaruh.",
+    "category": "category-binding (nama produk vs kategori)",
+    "scenario": "cashback_category_trap",
+    "paramset": 0,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-034",
+    "prompt": "Promo cashback 12% HANYA untuk produk kategori 'Elektronik' (dihitung dari subtotal item kategori tersebut saja). Pelanggan membeli: Speaker (kategori 'Elektronik') seharga 350.000, Elektronik untuk Pemula (kategori 'Buku') seharga 120.000, Tas (kategori 'Fashion') seharga 130.000. Hitung total yang harus dibayar setelah cashback (jawab angka saja).",
+    "expected_output": 558000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'cashback_category_trap', shift harga x1.0. Expected = 558.000. Cashback hanya dari item kategori 'Elektronik' (350.000 x 12%); nama produk tidak berpengaruh.",
+    "category": "category-binding (nama produk vs kategori)",
+    "scenario": "cashback_category_trap",
+    "paramset": 1,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-035",
+    "prompt": "Promo cashback 12% HANYA untuk produk kategori 'Elektronik' (dihitung dari subtotal item kategori tersebut saja). Pelanggan membeli: Speaker (kategori 'Elektronik') seharga 420.000, Elektronik untuk Pemula (kategori 'Buku') seharga 144.000, Tas (kategori 'Fashion') seharga 156.000. Hitung total yang harus dibayar setelah cashback (jawab angka saja).",
+    "expected_output": 669600.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'cashback_category_trap', shift harga x1.2. Expected = 669.600. Cashback hanya dari item kategori 'Elektronik' (420.000 x 12%); nama produk tidak berpengaruh.",
+    "category": "category-binding (nama produk vs kategori)",
+    "scenario": "cashback_category_trap",
+    "paramset": 1,
+    "shift": 1.2
+  },
+  {
+    "id": "GEN-036",
+    "prompt": "Promo cashback 12% HANYA untuk produk kategori 'Elektronik' (dihitung dari subtotal item kategori tersebut saja). Pelanggan membeli: Speaker (kategori 'Elektronik') seharga 700.000, Elektronik untuk Pemula (kategori 'Buku') seharga 240.000, Tas (kategori 'Fashion') seharga 260.000. Hitung total yang harus dibayar setelah cashback (jawab angka saja).",
+    "expected_output": 1116000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'cashback_category_trap', shift harga x2.0. Expected = 1.116.000. Cashback hanya dari item kategori 'Elektronik' (700.000 x 12%); nama produk tidak berpengaruh.",
+    "category": "category-binding (nama produk vs kategori)",
+    "scenario": "cashback_category_trap",
+    "paramset": 1,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-037",
+    "prompt": "Semua item kena diskon 12.5%. Aturan pembulatan: harga final MASING-MASING item dibulatkan KE BAWAH (floor) ke rupiah penuh, BARU dijumlahkan. Harga: 15.999, 45.555, 77.777. Hitung total tagihan final (jawab angka saja).",
+    "expected_output": 121913.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'floor_per_item', shift harga x1.0. Expected = 121.913. Floor per item SEBELUM penjumlahan, bukan floor dari total.",
+    "category": "rounding (floor per item)",
+    "scenario": "floor_per_item",
+    "paramset": 0,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-038",
+    "prompt": "Semua item kena diskon 12.5%. Aturan pembulatan: harga final MASING-MASING item dibulatkan KE BAWAH (floor) ke rupiah penuh, BARU dijumlahkan. Harga: 31.998, 91.110, 155.554. Hitung total tagihan final (jawab angka saja).",
+    "expected_output": 243828.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'floor_per_item', shift harga x2.0. Expected = 243.828. Floor per item SEBELUM penjumlahan, bukan floor dari total.",
+    "category": "rounding (floor per item)",
+    "scenario": "floor_per_item",
+    "paramset": 0,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-039",
+    "prompt": "Semua item kena diskon 10%. Aturan pembulatan: harga final MASING-MASING item dibulatkan KE BAWAH (floor) ke rupiah penuh, BARU dijumlahkan. Harga: 23.999, 53.555, 66.777. Hitung total tagihan final (jawab angka saja).",
+    "expected_output": 129897.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'floor_per_item', shift harga x1.0. Expected = 129.897. Floor per item SEBELUM penjumlahan, bukan floor dari total.",
+    "category": "rounding (floor per item)",
+    "scenario": "floor_per_item",
+    "paramset": 1,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-040",
+    "prompt": "Semua item kena diskon 10%. Aturan pembulatan: harga final MASING-MASING item dibulatkan KE BAWAH (floor) ke rupiah penuh, BARU dijumlahkan. Harga: 47.998, 107.110, 133.554. Hitung total tagihan final (jawab angka saja).",
+    "expected_output": 259795.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'floor_per_item', shift harga x2.0. Expected = 259.795. Floor per item SEBELUM penjumlahan, bukan floor dari total.",
+    "category": "rounding (floor per item)",
+    "scenario": "floor_per_item",
+    "paramset": 1,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-041",
+    "prompt": "Poin (1 poin = Rp1) boleh dipakai sebagai potongan, tetapi maksimal 50% dari total harga SETELAH diskon, SEBELUM poin. Pelanggan  memiliki 80.000 poin. Subtotal belanja 100.000, lalu diskon otomatis 10% diterapkan. Hitung total uang yang harus dibayar (jawab angka saja).",
+    "expected_output": 45000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'points_cap', shift harga x1.0. Expected = 45.000. Harga setelah diskon 90.000; maks poin 45.000 (dimiliki 80.000 — hanya min(kedua nilai) yang terpakai).",
+    "category": "points-cap (maks % dari total)",
+    "scenario": "points_cap",
+    "paramset": 0,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-042",
+    "prompt": "Poin (1 poin = Rp1) boleh dipakai sebagai potongan, tetapi maksimal 50% dari total harga SETELAH diskon, SEBELUM poin. Pelanggan  memiliki 80.000 poin. Subtotal belanja 120.000, lalu diskon otomatis 10% diterapkan. Hitung total uang yang harus dibayar (jawab angka saja).",
+    "expected_output": 54000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'points_cap', shift harga x1.2. Expected = 54.000. Harga setelah diskon 108.000; maks poin 54.000 (dimiliki 80.000 — hanya min(kedua nilai) yang terpakai).",
+    "category": "points-cap (maks % dari total)",
+    "scenario": "points_cap",
+    "paramset": 0,
+    "shift": 1.2
+  },
+  {
+    "id": "GEN-043",
+    "prompt": "Poin (1 poin = Rp1) boleh dipakai sebagai potongan, tetapi maksimal 50% dari total harga SETELAH diskon, SEBELUM poin. Pelanggan  memiliki 80.000 poin. Subtotal belanja 200.000, lalu diskon otomatis 10% diterapkan. Hitung total uang yang harus dibayar (jawab angka saja).",
+    "expected_output": 100000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'points_cap', shift harga x2.0. Expected = 100.000. Harga setelah diskon 180.000; maks poin 90.000 (dimiliki 80.000 — hanya min(kedua nilai) yang terpakai).",
+    "category": "points-cap (maks % dari total)",
+    "scenario": "points_cap",
+    "paramset": 0,
+    "shift": 2.0
+  },
+  {
+    "id": "GEN-044",
+    "prompt": "Poin (1 poin = Rp1) boleh dipakai sebagai potongan, tetapi maksimal 40% dari total harga SETELAH diskon, SEBELUM poin. Pelanggan  memiliki 90.000 poin. Subtotal belanja 250.000, lalu diskon otomatis 20% diterapkan. Hitung total uang yang harus dibayar (jawab angka saja).",
+    "expected_output": 120000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'points_cap', shift harga x1.0. Expected = 120.000. Harga setelah diskon 200.000; maks poin 80.000 (dimiliki 90.000 — hanya min(kedua nilai) yang terpakai).",
+    "category": "points-cap (maks % dari total)",
+    "scenario": "points_cap",
+    "paramset": 1,
+    "shift": 1.0
+  },
+  {
+    "id": "GEN-045",
+    "prompt": "Poin (1 poin = Rp1) boleh dipakai sebagai potongan, tetapi maksimal 40% dari total harga SETELAH diskon, SEBELUM poin. Pelanggan  memiliki 90.000 poin. Subtotal belanja 300.000, lalu diskon otomatis 20% diterapkan. Hitung total uang yang harus dibayar (jawab angka saja).",
+    "expected_output": 150000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'points_cap', shift harga x1.2. Expected = 150.000. Harga setelah diskon 240.000; maks poin 96.000 (dimiliki 90.000 — hanya min(kedua nilai) yang terpakai).",
+    "category": "points-cap (maks % dari total)",
+    "scenario": "points_cap",
+    "paramset": 1,
+    "shift": 1.2
+  },
+  {
+    "id": "GEN-046",
+    "prompt": "Poin (1 poin = Rp1) boleh dipakai sebagai potongan, tetapi maksimal 40% dari total harga SETELAH diskon, SEBELUM poin. Pelanggan  memiliki 90.000 poin. Subtotal belanja 500.000, lalu diskon otomatis 20% diterapkan. Hitung total uang yang harus dibayar (jawab angka saja).",
+    "expected_output": 310000.0,
+    "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'points_cap', shift harga x2.0. Expected = 310.000. Harga setelah diskon 400.000; maks poin 160.000 (dimiliki 90.000 — hanya min(kedua nilai) yang terpakai).",
+    "category": "points-cap (maks % dari total)",
+    "scenario": "points_cap",
+    "paramset": 1,
+    "shift": 2.0
+  }
+]

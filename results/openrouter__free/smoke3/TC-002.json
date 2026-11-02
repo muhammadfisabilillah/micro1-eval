@@ -1,0 +1,20 @@
+{
+  "case_id": "TC-002",
+  "model": "openrouter/free",
+  "prompt": "Toko menerapkan aturan EKSKLUSIF: Voucher potongan 50.000 dan Diskon Member 10% TIDAK BOLEH digabungkan dalam satu transaksi. Sistem otomatis memilih diskon dengan keuntungan TERBESAR bagi pelanggan. Seorang member membeli barang dengan subtotal 300.000 dan ingin memakai voucher. Hitung total akhir yang harus dibayar (jawab angka saja, tanpa penjelasan).",
+  "expected": 250000.0,
+  "rules": "Aturan eksklusif: hanya boleh pilih satu. Diskon member = 10% x 300.000 = 30.000; Voucher = 50.000. Karena keuntungan voucher lebih besar, voucher yang dipakai: 300.000 - 50.000 = 250.000. AI yang keliru akan menggabungkan keduanya atau memilih diskon member.",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 250000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 5.347367699985625,
+      "raw": "250.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 1,
+  "pass_rate": 1.0
+}

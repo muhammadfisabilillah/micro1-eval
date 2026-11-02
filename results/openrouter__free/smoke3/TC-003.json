@@ -1,0 +1,20 @@
+{
+  "case_id": "TC-003",
+  "model": "openrouter/free",
+  "prompt": "Voucher potongan 25.000 hanya berlaku jika TOTAL BELANJA (subtotal saja, TIDAK termasuk biaya pengiriman) minimal 100.000, dan potongan hanya berlaku pada subtotal. Seorang pelanggan membeli 1 Sepatu (35.000), 1 Topi (55.000), dengan biaya pengiriman 15.000. Hitung total tagihan akhir (subtotal + pengiriman - voucher jika syarat terpenuhi). Jawab angka saja.",
+  "expected": 105000.0,
+  "rules": "Subtotal = 35.000 + 55.000 = 90.000 (tanpa ongkir). Karena 90.000 < 100.000, syarat minimum TIDAK terpenuhi meskipun (90.000 + 15.000 = 105.000) melebihi 100.000, maka voucher tidak berlaku. Total akhir = 90.000 + 15.000 (ongkir tetap dibayar) = 105.000.",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 105000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 3.206384999997681,
+      "raw": "105.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 1,
+  "pass_rate": 1.0
+}

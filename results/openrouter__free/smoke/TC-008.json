@@ -1,0 +1,20 @@
+{
+  "case_id": "TC-008",
+  "model": "openrouter/free",
+  "prompt": "Aturan poin reward: poin boleh dipakai sebagai potongan (1 poin = Rp1), TAPI maksimal sebanyak 50% dari total harga SETELAH diskon dan SEBELUM poin. Pelanggan memiliki 80.000 poin. Belanja: subtotal 100.000, lalu diskon member 10% diterapkan. Hitung total akhir yang benar-benar berupa uang yang harus dibayar dalam rupiah setelah aturan poin (jawab angka saja, tanpa penjelasan).",
+  "expected": 45000.0,
+  "rules": "Total harga setelah diskon = 100.000 - 10% = 90.000. Batas maksimal poin = 50% * 90.000 = 45.000, meskipun pelanggan memiliki 80.000 poin, yang bisa dipakai HANYA 45.000. Kesalahan umum AI: menggunakan 80.000 poin (hasil 10.000) atau 50% dari poinnya sendiri (40.000, hasil 50.000). Jawaban benar: 90.000 - 45.000 = 45.000.",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 45000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 13.919728400011081,
+      "raw": "45.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 1,
+  "pass_rate": 1.0
+}

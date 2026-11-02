@@ -1,0 +1,20 @@
+{
+  "case_id": "TC-006",
+  "model": "openrouter/free",
+  "prompt": "Promo: VOUCHER CASHBACK 10% hanya berlaku untuk produk dengan KATEGORI 'Elektronik' (cashback dihitung dari subtotal item Elektronik saja, bukan seluruh belanja). Pelanggan membeli: (1) TV kategori 'Elektronik' 500.000, (2) Buku berjudul 'Elektronik untuk Pemula' kategori 'Buku' seharga 100.000, dan (3) Sprei kategori 'Rumah Tangga' seharga 100.000. HITUNG total yang harus dibayar setelah cashback diperhitungkan (jawab angka saja, tanpa penjelasan).",
+  "expected": 650000.0,
+  "rules": "Hanya TV yang kategorinya 'Elektronik' sehingga cashback = 10% * 500.000 = 50.000. Buku berjudul 'Elektronik untuk Pemula' TETAP kategori 'Buku', jadi TIDAK dapat cashback (jebakan nama produk). Total = (500.000 + 100.000 + 100.000) - 50.000 = 650.000. Kesalahan umum AI: menghitung cashback 10% * 600.000 = 60.000 sehingga menjawab 640.000.",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 650000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 9.008202800003346,
+      "raw": "\n\n650.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 1,
+  "pass_rate": 1.0
+}

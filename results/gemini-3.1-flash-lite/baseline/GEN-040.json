@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-040",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "Semua item kena diskon 10%. Aturan pembulatan: harga final MASING-MASING item dibulatkan KE BAWAH (floor) ke rupiah penuh, BARU dijumlahkan. Harga: 47.998, 107.110, 133.554. Hitung total tagihan final (jawab angka saja).",
+  "expected": 259795.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'floor_per_item', shift harga x2.0. Expected = 259.795. Floor per item SEBELUM penjumlahan, bukan floor dari total.",
+  "category": "rounding (floor per item)",
+  "scenario": "floor_per_item",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 259795.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 4.7516290999774355,
+      "raw": "Berikut adalah langkah-langkah perhitungan berdasarkan aturan yang diberikan:\n\n1. **Item 1:** 47.998 - (10% dari 47.998) = 47.998 - 4.799,8 = 43.198,2. Dibulatkan ke bawah menjadi **43.198**.\n2. **Item 2:** 107.110 - (10% dari 107.110) = 107.110 - 10.711 = 96.399. Dibulatkan ke bawah menjadi **96.399**.\n3. **Item 3:** 133.554 - (10% dari 133.554) = 133.554 - 13.355,4 = 120.198,6. Dibulatkan ke bawah menjadi **120.198**.\n4. **Total:** 43.198 + 96.399 + 120.198 = 259.795.\n\n259.795",
+      "error": null
+    },
+    {
+      "run": 2,
+      "actual": 259795.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.491127699991921,
+      "raw": "Berikut adalah langkah-langkah perhitungan berdasarkan aturan yang diberikan:\n\n1. **Item 1:** 47.998 - (10% dari 47.998) = 47.998 - 4.799,8 = 43.198,2. Dibulatkan ke bawah menjadi **43.198**.\n2. **Item 2:** 107.110 - (10% dari 107.110) = 107.110 - 10.711 = 96.399. Dibulatkan ke bawah menjadi **96.399**.\n3. **Item 3:** 133.554 - (10% dari 133.554) = 133.554 - 13.355,4 = 120.198,6. Dibulatkan ke bawah menjadi **120.198**.\n4. **Total:** 43.198 + 96.399 + 120.198 = 259.795.\n\n259.795",
+      "error": null
+    },
+    {
+      "run": 3,
+      "actual": 259795.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 2.936789300001692,
+      "raw": "Berikut adalah langkah-langkah perhitungan berdasarkan aturan yang diberikan:\n\n1. **Item 1:** 47.998 - (10% dari 47.998) = 47.998 - 4.799,8 = 43.198,2. Dibulatkan ke bawah menjadi **43.198**.\n2. **Item 2:** 107.110 - (10% dari 107.110) = 107.110 - 10.711 = 96.399. Dibulatkan ke bawah menjadi **96.399**.\n3. **Item 3:** 133.554 - (10% dari 133.554) = 133.554 - 13.355,4 = 120.198,6. Dibulatkan ke bawah menjadi **120.198**.\n4. **Total:** 43.198 + 96.399 + 120.198 = 259.795.\n\n259.795",
+      "error": null
+    }
+  ],
+  "passed_runs": 3,
+  "pass_rate": 1.0
+}

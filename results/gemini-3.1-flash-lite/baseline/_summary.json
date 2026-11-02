@@ -1,0 +1,148 @@
+{
+  "generated_at": "2026-10-29T17:09:05.029711+00:00",
+  "model": "gemini-3.1-flash-lite",
+  "runs_per_case": 3,
+  "total_runs": 138,
+  "passed_runs": 120,
+  "accuracy": 0.8695652173913043,
+  "cases": {
+    "GEN-001": {
+      "pass_rate": 0.0
+    },
+    "GEN-002": {
+      "pass_rate": 0.0
+    },
+    "GEN-003": {
+      "pass_rate": 0.0
+    },
+    "GEN-004": {
+      "pass_rate": 0.0
+    },
+    "GEN-005": {
+      "pass_rate": 0.0
+    },
+    "GEN-006": {
+      "pass_rate": 0.0
+    },
+    "GEN-007": {
+      "pass_rate": 1.0
+    },
+    "GEN-008": {
+      "pass_rate": 1.0
+    },
+    "GEN-009": {
+      "pass_rate": 1.0
+    },
+    "GEN-010": {
+      "pass_rate": 1.0
+    },
+    "GEN-011": {
+      "pass_rate": 1.0
+    },
+    "GEN-012": {
+      "pass_rate": 1.0
+    },
+    "GEN-013": {
+      "pass_rate": 1.0
+    },
+    "GEN-014": {
+      "pass_rate": 1.0
+    },
+    "GEN-015": {
+      "pass_rate": 1.0
+    },
+    "GEN-016": {
+      "pass_rate": 1.0
+    },
+    "GEN-017": {
+      "pass_rate": 1.0
+    },
+    "GEN-018": {
+      "pass_rate": 1.0
+    },
+    "GEN-019": {
+      "pass_rate": 1.0
+    },
+    "GEN-020": {
+      "pass_rate": 1.0
+    },
+    "GEN-021": {
+      "pass_rate": 1.0
+    },
+    "GEN-022": {
+      "pass_rate": 1.0
+    },
+    "GEN-023": {
+      "pass_rate": 1.0
+    },
+    "GEN-024": {
+      "pass_rate": 1.0
+    },
+    "GEN-025": {
+      "pass_rate": 1.0
+    },
+    "GEN-026": {
+      "pass_rate": 1.0
+    },
+    "GEN-027": {
+      "pass_rate": 1.0
+    },
+    "GEN-028": {
+      "pass_rate": 1.0
+    },
+    "GEN-029": {
+      "pass_rate": 1.0
+    },
+    "GEN-030": {
+      "pass_rate": 1.0
+    },
+    "GEN-031": {
+      "pass_rate": 1.0
+    },
+    "GEN-032": {
+      "pass_rate": 1.0
+    },
+    "GEN-033": {
+      "pass_rate": 1.0
+    },
+    "GEN-034": {
+      "pass_rate": 1.0
+    },
+    "GEN-035": {
+      "pass_rate": 1.0
+    },
+    "GEN-036": {
+      "pass_rate": 1.0
+    },
+    "GEN-037": {
+      "pass_rate": 1.0
+    },
+    "GEN-038": {
+      "pass_rate": 1.0
+    },
+    "GEN-039": {
+      "pass_rate": 1.0
+    },
+    "GEN-040": {
+      "pass_rate": 1.0
+    },
+    "GEN-041": {
+      "pass_rate": 1.0
+    },
+    "GEN-042": {
+      "pass_rate": 1.0
+    },
+    "GEN-043": {
+      "pass_rate": 1.0
+    },
+    "GEN-044": {
+      "pass_rate": 1.0
+    },
+    "GEN-045": {
+      "pass_rate": 1.0
+    },
+    "GEN-046": {
+      "pass_rate": 1.0
+    }
+  }
+}

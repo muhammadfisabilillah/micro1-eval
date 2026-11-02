@@ -1,0 +1,20 @@
+{
+  "case_id": "GEN-001",
+  "model": "openrouter/free",
+  "prompt": "Toko menerapkan diskon BERTINGKAT. Aturan: (1) member mendapat diskon 15% jika subtotalnya lebih dari 500.000; (2) semua produk kategori 'Elektronik' mendapat diskon TAMBAHAN 10% dari harga jual item tersebut. Pelanggan member membeli TV (kategori 'Elektronik') seharga 2.000.000, Buku (kategori 'Buku') seharga 100.000. Hitung grand total yang dibayar (jawab angka saja).",
+  "expected": 1585000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tiered_disc', shift harga x1.0. Expected = 1.585.000. Subtotal 2.100.000; diskon member 315.000; ekstra kategori 200.000.",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 1585000.0,
+      "passed": true,
+      "attempts": 5,
+      "duration_s": 134.30488190002507,
+      "raw": "Langkah-langkah perhitungan:\n\n1. **Hitung subtotal:**\n   TV (Elektronik) 2.000.000 + Buku 100.000 = 2.100.000\n\n2. **Terapkan Rule 1 (Diskon member 15%):**\n   Karena subtotal (2.100.000) > 500.000, maka pelanggan mendapat diskon 15%.\n   Diskon = 2.100.000 × 15% = 315.000\n\n3. **Terapkan Rule 2 (Diskon tambahan untuk Elektronik 10%):**\n   TV termasuk kategori Elektronik, sehingga mendapat diskon tambahan 10% dari harga jual item tersebut.\n   Diskon tambahan = 2.000.000 × 10% = 200.000\n\n4. **Hitung grand total:**\n   Grand total = Subtotal - Total diskon\n   Grand total = 2.100.000 - (315.000 + 200.000)\n   Grand total = 2.100.000 - 515.000 = 1.585.000\n\n1.585.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 1,
+  "pass_rate": 1.0
+}

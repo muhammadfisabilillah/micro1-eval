@@ -1,0 +1,20 @@
+{
+  "case_id": "TC-007",
+  "model": "openrouter/free",
+  "prompt": "Aturan pembulatan toko: setiap item diberi diskon 12,5%, lalu harga final MASING-MASING item dibulatkan KE BAWAH (floor) ke rupiah penuh, BARU dijumlahkan. Belanja: Item A 15.999, Item B 45.555, Item C 77.777 (semua kena diskon 12,5%). Hitung total tagihan final sesuai aturan pembulatan (jawab angka saja, tanpa penjelasan).",
+  "expected": 121913.0,
+  "rules": "Item A: 15.999 * 0,875 = 13.999,125 -> floor = 13.999. Item B: 45.555 * 0,875 = 39.860,625 -> floor = 39.860. Item C: 77.777 * 0,875 = 68.054,875 -> floor = 68.054. Total = 13.999 + 39.860 + 68.054 = 121.913. Kesalahan umum AI: menjumlahkan dulu barulah dibulatkan (139.331 * 0,875 = 121.914,625 -> 121.914 atau 121.915), urutan ini menghasilkan selisih 1-2 rupiah.",
+  "runs": [
+    {
+      "run": 1,
+      "actual": null,
+      "passed": false,
+      "attempts": 1,
+      "duration_s": 2.015024499996798,
+      "raw": "User Safety: safe",
+      "error": "Tidak ada angka yang bisa diekstrak dari baris terakhir respons."
+    }
+  ],
+  "passed_runs": 0,
+  "pass_rate": 0.0
+}

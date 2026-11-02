@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-035",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "Promo cashback 12% HANYA untuk produk kategori 'Elektronik' (dihitung dari subtotal item kategori tersebut saja). Pelanggan membeli: Speaker (kategori 'Elektronik') seharga 420.000, Elektronik untuk Pemula (kategori 'Buku') seharga 144.000, Tas (kategori 'Fashion') seharga 156.000. Hitung total yang harus dibayar setelah cashback (jawab angka saja).",
+  "expected": 669600.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'cashback_category_trap', shift harga x1.2. Expected = 669.600. Cashback hanya dari item kategori 'Elektronik' (420.000 x 12%); nama produk tidak berpengaruh.",
+  "category": "category-binding (nama produk vs kategori)",
+  "scenario": "cashback_category_trap",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 669600.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 2.3431259999924805,
+      "raw": "Berikut adalah langkah-langkah perhitungan untuk menentukan total yang harus dibayar:\n\n1. **Identifikasi item kategori 'Elektronik':**\n   - Speaker: 420.000\n   - (Item lain tidak termasuk kategori Elektronik).\n   - Subtotal Elektronik = 420.000\n\n2. **Hitung nilai cashback:**\n   - Cashback = 12% x 420.000 = 50.400\n\n3. **Hitung total belanja sebelum cashback:**\n   - Total = 420.000 (Speaker) + 144.000 (Buku) + 156.000 (Fashion) = 720.000\n\n4. **Hitung total yang harus dibayar setelah cashback:**\n   - Total Bayar = 720.000 - 50.400 = 669.600\n\n669.600",
+      "error": null
+    },
+    {
+      "run": 2,
+      "actual": 669600.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.46942370000761,
+      "raw": "Berikut adalah langkah-langkah perhitungan untuk menentukan total yang harus dibayar:\n\n1. **Identifikasi item kategori 'Elektronik':**\n   - Speaker: 420.000\n   - (Item lain tidak termasuk kategori Elektronik).\n   - Subtotal Elektronik = 420.000\n\n2. **Hitung nilai cashback:**\n   - Cashback = 12% x 420.000 = 50.400\n\n3. **Hitung total belanja sebelum cashback:**\n   - Total = 420.000 (Speaker) + 144.000 (Buku) + 156.000 (Fashion) = 720.000\n\n4. **Hitung total yang harus dibayar setelah cashback:**\n   - Total Bayar = 720.000 - 50.400 = 669.600\n\n669.600",
+      "error": null
+    },
+    {
+      "run": 3,
+      "actual": 669600.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.6615065000078175,
+      "raw": "Berikut adalah langkah-langkah perhitungan untuk menentukan total yang harus dibayar:\n\n1. **Identifikasi item kategori 'Elektronik':**\n   - Speaker: 420.000\n   - (Item lain tidak termasuk kategori Elektronik).\n   - Subtotal Elektronik = 420.000\n\n2. **Hitung nilai cashback:**\n   - Cashback = 12% x 420.000 = 50.400\n\n3. **Hitung total belanja sebelum cashback:**\n   - Total = 420.000 (Speaker) + 144.000 (Buku) + 156.000 (Fashion) = 720.000\n\n4. **Hitung total yang harus dibayar setelah cashback:**\n   - Total Bayar = 720.000 - 50.400 = 669.600\n\n669.600",
+      "error": null
+    }
+  ],
+  "passed_runs": 3,
+  "pass_rate": 1.0
+}

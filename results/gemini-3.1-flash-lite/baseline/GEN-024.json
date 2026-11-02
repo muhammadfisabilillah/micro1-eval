@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-024",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "PPN dikenakan 11% dan WAJIB dihitung dari harga SETELAH diskon, bukan harga normal. Diskon member 12% berlaku untuk semua item. Pelanggan membeli Kursi Kayu (kategori 'Furnitur') seharga 2.400.000, Cicipan (kategori 'Meja & Dapur') seharga 160.000. Hitung total tagihan akhir termasuk PPN (jawab angka saja).",
+  "expected": 2500608.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'tax_after_discount', shift harga x2.0. Expected = 2.500.608. Setelah diskon 2.252.800 → PPN 11% → 2.500.608.",
+  "category": "tax-base (PPN setelah diskon)",
+  "scenario": "tax_after_discount",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 2500608.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 2.0634710000013,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan:\n\n1. **Menghitung Total Harga Normal:**\n   2.400.000 (Kursi) + 160.000 (Cicipan) = 2.560.000\n\n2. **Menghitung Total Setelah Diskon Member (12%):**\n   Diskon = 2.560.000 × 12% = 307.200\n   Harga setelah diskon = 2.560.000 - 307.200 = 2.252.800\n\n3. **Menghitung PPN (11% dari harga setelah diskon):**\n   PPN = 2.252.800 × 11% = 247.808\n\n4. **Menghitung Total Tagihan Akhir:**\n   Total = 2.252.800 + 247.808 = 2.500.608\n\n2.500.608",
+      "error": null
+    },
+    {
+      "run": 2,
+      "actual": 2500608.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 15.762046599993482,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan:\n\n1. **Menghitung Total Harga Normal:**\n   2.400.000 (Kursi) + 160.000 (Cicipan) = 2.560.000\n\n2. **Menghitung Total Setelah Diskon Member (12%):**\n   Diskon = 2.560.000 × 12% = 307.200\n   Harga setelah diskon = 2.560.000 - 307.200 = 2.252.800\n\n3. **Menghitung PPN (11% dari harga setelah diskon):**\n   PPN = 2.252.800 × 11% = 247.808\n\n4. **Menghitung Total Tagihan Akhir:**\n   Total = 2.252.800 + 247.808 = 2.500.608\n\n2.500.608",
+      "error": null
+    },
+    {
+      "run": 3,
+      "actual": 2500608.0,
+      "passed": true,
+      "attempts": 3,
+      "duration_s": 24.200656400003936,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan:\n\n1. **Menghitung Total Harga Normal:**\n   2.400.000 (Kursi) + 160.000 (Cicipan) = 2.560.000\n\n2. **Menghitung Total Setelah Diskon Member (12%):**\n   Diskon = 2.560.000 × 12% = 307.200\n   Harga setelah diskon = 2.560.000 - 307.200 = 2.252.800\n\n3. **Menghitung PPN (11% dari harga setelah diskon):**\n   PPN = 2.252.800 × 11% = 247.808\n\n4. **Menghitung Total Tagihan Akhir:**\n   Total = 2.252.800 + 247.808 = 2.500.608\n\n2.500.608",
+      "error": null
+    }
+  ],
+  "passed_runs": 3,
+  "pass_rate": 1.0
+}

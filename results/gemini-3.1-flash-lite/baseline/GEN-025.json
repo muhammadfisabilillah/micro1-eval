@@ -1,0 +1,40 @@
+{
+  "case_id": "GEN-025",
+  "model": "gemini-3.1-flash-lite",
+  "prompt": "Gratis ongkir hanya jika subtotal SETELAH diskon/voucher lebih besar dari 100.000; jika tidak, ongkir 20.000 tetap dibayar. Yang jualan Jaket (kategori 'Fashion') seharga 90.000, Tas (kategori 'Fashion') seharga 60.000 lalu memakai voucher potongan 60.000. Hitung total tagihan akhir termasuk ongkir sesuai aturan (jawab angka saja).",
+  "expected": 110000.0,
+  "rules": "Dihitung oleh reference.py (single source of truth). Skenario 'free_shipping_after_voucher', shift harga x1.0. Expected = 110.000. Setelah voucher 90.000 <= 100.000 → ongkir DIBAYAR.",
+  "category": "boundary (cek setelah voucher)",
+  "scenario": "free_shipping_after_voucher",
+  "runs": [
+    {
+      "run": 1,
+      "actual": 110000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 1.7108040000020992,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan akhir:\n\n1. **Menghitung Subtotal Awal:**\n   Harga Jaket (90.000) + Harga Tas (60.000) = 150.000.\n\n2. **Menghitung Subtotal Setelah Diskon:**\n   Subtotal Awal (150.000) - Voucher (60.000) = 90.000.\n\n3. **Menentukan Ongkos Kirim:**\n   Karena subtotal setelah diskon (90.000) tidak lebih besar dari 100.000, maka aturan gratis ongkir tidak berlaku. Ongkir yang dikenakan adalah 20.000.\n\n4. **Menghitung Total Tagihan Akhir:**\n   Subtotal setelah diskon (90.000) + Ongkir (20.000) = 110.000.\n\n110.000",
+      "error": null
+    },
+    {
+      "run": 2,
+      "actual": 110000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 20.109167099988554,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan akhir:\n\n1. **Menghitung Subtotal Awal:**\n   Harga Jaket (90.000) + Harga Tas (60.000) = 150.000.\n\n2. **Menghitung Subtotal Setelah Diskon:**\n   Subtotal Awal (150.000) - Voucher (60.000) = 90.000.\n\n3. **Menentukan Ongkos Kirim:**\n   Karena subtotal setelah diskon (90.000) tidak lebih besar dari 100.000, maka aturan gratis ongkir tidak berlaku. Ongkir yang dikenakan adalah 20.000.\n\n4. **Menghitung Total Tagihan Akhir:**\n   Subtotal setelah diskon (90.000) + Ongkir (20.000) = 110.000.\n\n110.000",
+      "error": null
+    },
+    {
+      "run": 3,
+      "actual": 110000.0,
+      "passed": true,
+      "attempts": 1,
+      "duration_s": 15.940308299992466,
+      "raw": "Berikut adalah langkah-langkah perhitungan tagihan akhir:\n\n1. **Menghitung Subtotal Awal:**\n   Harga Jaket (90.000) + Harga Tas (60.000) = 150.000.\n\n2. **Menghitung Subtotal Setelah Diskon:**\n   Subtotal Awal (150.000) - Voucher (60.000) = 90.000.\n\n3. **Menentukan Ongkos Kirim:**\n   Karena subtotal setelah diskon (90.000) tidak lebih besar dari 100.000, maka aturan gratis ongkir tidak berlaku. Ongkir yang dikenakan adalah 20.000.\n\n4. **Menghitung Total Tagihan Akhir:**\n   Subtotal setelah diskon (90.000) + Ongkir (20.000) = 110.000.\n\n110.000",
+      "error": null
+    }
+  ],
+  "passed_runs": 3,
+  "pass_rate": 1.0
+}
