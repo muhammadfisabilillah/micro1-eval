@@ -7,7 +7,8 @@
     "category": "ordering + category-binding",
     "scenario": "tiered_disc",
     "paramset": 0,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-002",
@@ -17,7 +18,8 @@
     "category": "ordering + category-binding",
     "scenario": "tiered_disc",
     "paramset": 0,
-    "shift": 1.2
+    "shift": 1.2,
+    "lang": "id"
   },
   {
     "id": "GEN-003",
@@ -27,7 +29,8 @@
     "category": "ordering + category-binding",
     "scenario": "tiered_disc",
     "paramset": 0,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-004",
@@ -37,7 +40,8 @@
     "category": "ordering + category-binding",
     "scenario": "tiered_disc",
     "paramset": 1,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-005",
@@ -47,7 +51,8 @@
     "category": "ordering + category-binding",
     "scenario": "tiered_disc",
     "paramset": 1,
-    "shift": 1.2
+    "shift": 1.2,
+    "lang": "id"
   },
   {
     "id": "GEN-006",
@@ -57,7 +62,8 @@
     "category": "ordering + category-binding",
     "scenario": "tiered_disc",
     "paramset": 1,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-007",
@@ -67,7 +73,8 @@
     "category": "exclusive-selection",
     "scenario": "exclusive",
     "paramset": 0,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-008",
@@ -77,7 +84,8 @@
     "category": "exclusive-selection",
     "scenario": "exclusive",
     "paramset": 0,
-    "shift": 1.2
+    "shift": 1.2,
+    "lang": "id"
   },
   {
     "id": "GEN-009",
@@ -87,7 +95,8 @@
     "category": "exclusive-selection",
     "scenario": "exclusive",
     "paramset": 0,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-010",
@@ -97,7 +106,8 @@
     "category": "exclusive-selection",
     "scenario": "exclusive",
     "paramset": 1,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-011",
@@ -107,7 +117,8 @@
     "category": "exclusive-selection",
     "scenario": "exclusive",
     "paramset": 1,
-    "shift": 1.2
+    "shift": 1.2,
+    "lang": "id"
   },
   {
     "id": "GEN-012",
@@ -117,7 +128,8 @@
     "category": "exclusive-selection",
     "scenario": "exclusive",
     "paramset": 1,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-013",
@@ -127,7 +139,8 @@
     "category": "boundary (cek subtotal tanpa ongkir)",
     "scenario": "min_subtotal_voucher",
     "paramset": 0,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-014",
@@ -137,7 +150,8 @@
     "category": "boundary (cek subtotal tanpa ongkir)",
     "scenario": "min_subtotal_voucher",
     "paramset": 0,
-    "shift": 1.2
+    "shift": 1.2,
+    "lang": "id"
   },
   {
     "id": "GEN-015",
@@ -147,7 +161,8 @@
     "category": "boundary (cek subtotal tanpa ongkir)",
     "scenario": "min_subtotal_voucher",
     "paramset": 0,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-016",
@@ -157,7 +172,8 @@
     "category": "boundary (cek subtotal tanpa ongkir)",
     "scenario": "min_subtotal_voucher",
     "paramset": 1,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-017",
@@ -167,7 +183,8 @@
     "category": "boundary (cek subtotal tanpa ongkir)",
     "scenario": "min_subtotal_voucher",
     "paramset": 1,
-    "shift": 1.2
+    "shift": 1.2,
+    "lang": "id"
   },
   {
     "id": "GEN-018",
@@ -177,7 +194,8 @@
     "category": "boundary (cek subtotal tanpa ongkir)",
     "scenario": "min_subtotal_voucher",
     "paramset": 1,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-019",
@@ -187,7 +205,8 @@
     "category": "tax-base (PPN setelah diskon)",
     "scenario": "tax_after_discount",
     "paramset": 0,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-020",
@@ -197,7 +216,8 @@
     "category": "tax-base (PPN setelah diskon)",
     "scenario": "tax_after_discount",
     "paramset": 0,
-    "shift": 1.2
+    "shift": 1.2,
+    "lang": "id"
   },
   {
     "id": "GEN-021",
@@ -207,7 +227,8 @@
     "category": "tax-base (PPN setelah diskon)",
     "scenario": "tax_after_discount",
     "paramset": 0,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-022",
@@ -217,7 +238,8 @@
     "category": "tax-base (PPN setelah diskon)",
     "scenario": "tax_after_discount",
     "paramset": 1,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-023",
@@ -227,7 +249,8 @@
     "category": "tax-base (PPN setelah diskon)",
     "scenario": "tax_after_discount",
     "paramset": 1,
-    "shift": 1.2
+    "shift": 1.2,
+    "lang": "id"
   },
   {
     "id": "GEN-024",
@@ -237,7 +260,8 @@
     "category": "tax-base (PPN setelah diskon)",
     "scenario": "tax_after_discount",
     "paramset": 1,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-025",
@@ -247,7 +271,8 @@
     "category": "boundary (cek setelah voucher)",
     "scenario": "free_shipping_after_voucher",
     "paramset": 0,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-026",
@@ -257,7 +282,8 @@
     "category": "boundary (cek setelah voucher)",
     "scenario": "free_shipping_after_voucher",
     "paramset": 0,
-    "shift": 1.2
+    "shift": 1.2,
+    "lang": "id"
   },
   {
     "id": "GEN-027",
@@ -267,7 +293,8 @@
     "category": "boundary (cek setelah voucher)",
     "scenario": "free_shipping_after_voucher",
     "paramset": 0,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-028",
@@ -277,7 +304,8 @@
     "category": "boundary (cek setelah voucher)",
     "scenario": "free_shipping_after_voucher",
     "paramset": 1,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-029",
@@ -287,7 +315,8 @@
     "category": "boundary (cek setelah voucher)",
     "scenario": "free_shipping_after_voucher",
     "paramset": 1,
-    "shift": 1.2
+    "shift": 1.2,
+    "lang": "id"
   },
   {
     "id": "GEN-030",
@@ -297,7 +326,8 @@
     "category": "boundary (cek setelah voucher)",
     "scenario": "free_shipping_after_voucher",
     "paramset": 1,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-031",
@@ -307,7 +337,8 @@
     "category": "category-binding (nama produk vs kategori)",
     "scenario": "cashback_category_trap",
     "paramset": 0,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-032",
@@ -317,7 +348,8 @@
     "category": "category-binding (nama produk vs kategori)",
     "scenario": "cashback_category_trap",
     "paramset": 0,
-    "shift": 1.2
+    "shift": 1.2,
+    "lang": "id"
   },
   {
     "id": "GEN-033",
@@ -327,7 +359,8 @@
     "category": "category-binding (nama produk vs kategori)",
     "scenario": "cashback_category_trap",
     "paramset": 0,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-034",
@@ -337,7 +370,8 @@
     "category": "category-binding (nama produk vs kategori)",
     "scenario": "cashback_category_trap",
     "paramset": 1,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-035",
@@ -347,7 +381,8 @@
     "category": "category-binding (nama produk vs kategori)",
     "scenario": "cashback_category_trap",
     "paramset": 1,
-    "shift": 1.2
+    "shift": 1.2,
+    "lang": "id"
   },
   {
     "id": "GEN-036",
@@ -357,7 +392,8 @@
     "category": "category-binding (nama produk vs kategori)",
     "scenario": "cashback_category_trap",
     "paramset": 1,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-037",
@@ -367,7 +403,8 @@
     "category": "rounding (floor per item)",
     "scenario": "floor_per_item",
     "paramset": 0,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-038",
@@ -377,7 +414,8 @@
     "category": "rounding (floor per item)",
     "scenario": "floor_per_item",
     "paramset": 0,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-039",
@@ -387,7 +425,8 @@
     "category": "rounding (floor per item)",
     "scenario": "floor_per_item",
     "paramset": 1,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-040",
@@ -397,7 +436,8 @@
     "category": "rounding (floor per item)",
     "scenario": "floor_per_item",
     "paramset": 1,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-041",
@@ -407,7 +447,8 @@
     "category": "points-cap (maks % dari total)",
     "scenario": "points_cap",
     "paramset": 0,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-042",
@@ -417,7 +458,8 @@
     "category": "points-cap (maks % dari total)",
     "scenario": "points_cap",
     "paramset": 0,
-    "shift": 1.2
+    "shift": 1.2,
+    "lang": "id"
   },
   {
     "id": "GEN-043",
@@ -427,7 +469,8 @@
     "category": "points-cap (maks % dari total)",
     "scenario": "points_cap",
     "paramset": 0,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   },
   {
     "id": "GEN-044",
@@ -437,7 +480,8 @@
     "category": "points-cap (maks % dari total)",
     "scenario": "points_cap",
     "paramset": 1,
-    "shift": 1.0
+    "shift": 1.0,
+    "lang": "id"
   },
   {
     "id": "GEN-045",
@@ -447,7 +491,8 @@
     "category": "points-cap (maks % dari total)",
     "scenario": "points_cap",
     "paramset": 1,
-    "shift": 1.2
+    "shift": 1.2,
+    "lang": "id"
   },
   {
     "id": "GEN-046",
@@ -457,6 +502,7 @@
     "category": "points-cap (maks % dari total)",
     "scenario": "points_cap",
     "paramset": 1,
-    "shift": 2.0
+    "shift": 2.0,
+    "lang": "id"
   }
 ]

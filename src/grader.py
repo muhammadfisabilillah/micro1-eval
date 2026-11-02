@@ -68,7 +68,7 @@ def load_cases(path: Path = CASES_PATH) -> List[Dict[str, Any]]:
     Raises:
         FileNotFoundError / json.JSONDecodeError jika file bermasalah.
     """
-    logger.info("Membaca test case dari %s", path)
+    logger.info("Loading test cases from %s", path)
     with path.open(mode="r", encoding="utf-8") as f:
         return list(json.load(f))
 
@@ -76,20 +76,20 @@ def load_cases(path: Path = CASES_PATH) -> List[Dict[str, Any]]:
 def build_parser() -> argparse.ArgumentParser:
     """Argumen CLI grader."""
     parser = argparse.ArgumentParser(
-        description="AI Evaluation Framework - Grader e-commerce (reproducible)."
+        description="AI Evaluation Framework - E-commerce logic grader (reproducible)."
     )
     parser.add_argument("--model", default=DEFAULT_OPENROUTER_MODEL,
-                        help="Slug model OpenRouter, atau 'gemini' / slug Gemini (default: %(default)s)")
+                        help="OpenRouter model slug, or 'gemini' / a Gemini model slug (default: %(default)s)")
     parser.add_argument("--runs", type=int, default=3,
-                        help="Jumlah run per kasus (default: %(default)s)")
+                        help="Number of runs per case (default: %(default)s)")
     parser.add_argument("--out", default="results",
-                        help="Folder hasil arsip (default: %(default)s)")
+                        help="Archive output folder (default: %(default)s)")
     parser.add_argument("--tag", default="",
-                        help="Tag run, disimpan sebagai subfolder di dalam folder model")
+                        help="Run tag, stored as a subfolder inside the model folder")
     parser.add_argument("--cases", default=None,
-                        help="Path alternatif file eval_cases.json")
+                        help="Alternative path to an eval cases file")
     parser.add_argument("--skip-existing", action="store_true",
-                        help="Lewati kasus yang sudah terarsip dengan runs cukup (resumable)")
+                        help="Skip cases already archived with enough runs (resumable)")
     return parser
 
 
@@ -99,7 +99,7 @@ def evaluate_case(case: Dict[str, Any], model: str, run: int) -> RunRecord:
     Returns:
         RunRecord lengkap (verdict, timing, raw response, jumlah attempt).
     """
-    case_id = str(case.get("id", "<tanpa-id>"))
+    case_id = str(case.get("id", "<no-id>"))
     expected = float(case["expected_output"])
     prompt = str(case["prompt"])
 
@@ -120,8 +120,8 @@ def evaluate_case(case: Dict[str, Any], model: str, run: int) -> RunRecord:
         raw=ai.raw,
         error=None if is_correct else (
             f"Expected: {expected:.2f}, Actual: {ai.number:.2f}, "
-            f"Selisih: {abs(expected - ai.number):.2f} "
-            f"(melebihi toleransi {TOLERANCE:.2f})"
+            f"delta: {abs(expected - ai.number):.2f} "
+            f"(exceeds tolerance {TOLERANCE:.2f})"
         ),
     )
 
@@ -135,7 +135,7 @@ def run_grader(args: argparse.Namespace) -> int:
     try:
         cases = load_cases(args.cases and Path(args.cases) or CASES_PATH)
     except (OSError, json.JSONDecodeError) as exc:
-        logger.critical("Gagal memuat test case: %s", exc)
+        logger.critical("Failed to load test cases: %s", exc)
         return 2
 
     model_slug: str = args.model.replace("/", "__")
@@ -155,10 +155,10 @@ def run_grader(args: argparse.Namespace) -> int:
             try:
                 prior = json.loads(out_path.read_text(encoding="utf-8"))
                 if len(prior.get("runs", [])) >= args.runs:
-                    logger.info("SKIP %s (%d runs sudah terarsip)",
+                    logger.info("SKIP %s (%d runs already archived)",
                                 prior.get("case_id", out_path.stem), args.runs)
                     print(f"  [SKIP] {prior.get('case_id', out_path.stem)} "
-                          f"(sudah {args.runs} run)")
+                          f"(already {args.runs} runs)")
                     continue
             except (json.JSONDecodeError, OSError):
                 pass  # arsip rusak: evaluasi ulang
@@ -199,7 +199,7 @@ def run_grader(args: argparse.Namespace) -> int:
             "passed_runs": report.passed_runs,
             "pass_rate": report.pass_rate,
         })
-        logger.info("Arsip ditulis: %s", out_path)
+        logger.info("Archive written: %s", out_path)
 
     # Summary global: file + konsol. Jika semua kasus ter-skip (run-only
     # untuk re-summary), agregasi ulang dari arsip agar tidak accuracy 0.
@@ -222,7 +222,7 @@ def run_grader(args: argparse.Namespace) -> int:
                 "pass_rate": float(prior.get("pass_rate", 0.0))
             }
         if total_runs:
-            print(f"  (agregasi dari arsip: {len(cases_map)} kasus)")
+            print(f"  (aggregated from archive: {len(cases_map)} cases)")
 
     summary = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -236,8 +236,8 @@ def run_grader(args: argparse.Namespace) -> int:
     _write_json(result_dir / "_summary.json", summary)
 
     print("")
-    print(f"Model: {args.model} | Runs/kasus: {args.runs} | Arsip: {result_dir}")
-    print(f"Passed: {passed_runs}/{total_runs} ({summary['accuracy']:.0%} akurasi)")
+    print(f"Model: {args.model} | Runs/case: {args.runs} | Archive: {result_dir}")
+    print(f"Passed: {passed_runs}/{total_runs} ({summary['accuracy']:.0%} accuracy)")
     for r in reports:
         if r.pass_rate < 1.0:
             fails = [f"run {x.run}: {x.error}" for x in r.runs if not x.passed]

@@ -1,165 +1,212 @@
-# AI Evaluation Framework — E-commerce Logic
+# AI Evaluation Framework — E-Commerce Business Logic
 
-Framework untuk menguji kelemahan AI (LLM) dalam menangani logika bisnis
-e-commerce yang kompleks: **diskon bertingkat**, **aturan eksklusif**, **batas
-minimum transaksi**, **PPN setelah diskon**, **pembulatan floor**, **cashback
-kategori**, dan **batas poin** — via perturbation engine yang menghasilkan
-varian isomorfik otomatis dari reference implementation.
+A reproducible evaluation framework that probes a blind spot of modern LLMs:
+**multi-step e-commerce pricing logic**. Models are asked to compute a final
+amount under layered business rules — tiered discounts, exclusive promotions,
+minimum-subtotal gates, VAT after discount, per-item floor rounding,
+category-bound cashback, and points caps.
 
-## Struktur Project
+The framework generates isomorphic case variants (same logic, shifted prices),
+grades each case multiple times at `temperature=0`, and archives every raw
+response as evidence. Accuracy is reported per failure category, not just as a
+single score.
+
+## Headline result
+
+Baseline on `gemini-3.1-flash-lite`: **87.0% accuracy** (120 / 138 runs,
+46 cases x 3 runs) — with a striking, fully deterministic failure mode.
+
+| Category | Cases | Runs | Accuracy |
+|---|---:|---:|---:|
+| Ordering | 6 | 18 | **0%** |
+| Tax | 6 | 18 | 100% |
+| Boundary/Shipping | 12 | 36 | 100% |
+| Exclusive-selection | 6 | 18 | 100% |
+| Category-binding | 6 | 18 | 100% |
+| Points-cap | 6 | 18 | 100% |
+| Rounding | 4 | 12 | 100% |
+
+Full report with raw numbers: [`results/report.md`](results/report.md).
+
+### Trophy findings
+
+1. **Ordering bug (0 / 18 runs).** In the tiered-discount rule, the 15% member
+   discount must apply first to the subtotal, and only then the 10% category
+   discount is computed from each item's price. The model consistently swaps the
+   order (category discount first, then member discount on the new total),
+   shifting the percentage base. Every one of the 6 price/param variants fails
+   on all 3 runs.
+
+2. **The wrong rule is scale-invariant (systematic, not noise).** The wrong
+   answer on the 2x-price variant is an **exact 2x multiple** of the wrong answer
+   on the base variant (`5,192,000` vs `2,596,000`; correct answers are
+   `5,084,000` and `2,542,000`). The model does not "get confused by big
+   numbers" — it applies the same incorrect rule consistently at every scale.
+
+## Why this is different from a prompt benchmark
+
+- **A single source of truth.** All expected answers are computed by pure
+  Python (`src/reference.py`), unit-tested (`src/test_reference.py`), never
+  hand-written. This removes grader ambiguity.
+- **Isomorphic perturbation testing.** Every template is instantiated at
+  multiple price scales. Business logic is identical, so a correct model must
+  scale its answer linearly. This isolates reasoning errors from arithmetic
+  errors.
+- **Evidence, not claims.** Every call's raw response, latency, retry count,
+  verdict, expected and actual value are archived under
+  `results/<model>/<tag>/<CASE>.json`. The report is generated from those files.
+- **Rigor under audit.** While building this framework we found and fixed two
+  bugs in the framework itself (see "Framework self-audit" below). That process
+  is part of the provenance of the results.
+
+## Repository layout
 
 ```
-micro1-eval-ecommerce/
+.
 ├── data/
-│   ├── eval_cases.json            # 8 kasus seed (manual, "discovery")
-│   ├── cases_schema.json          # Schema terstruktur (8 template skenario)
-│   └── eval_cases_generated.json  # 46 kasus hasil generator (+varian isomorfik)
+│   ├── eval_cases.json          # 8 hand-written seed cases
+│   ├── cases_schema.json        # 8 scenario templates x paramsets x price shifts
+│   ├── eval_cases_generated.json# 46 canonical cases (Indonesian prompts)
+│   └── eval_cases_en.json       # English mirror of the same 46 cases
 ├── src/
-│   ├── reference.py       # Kalkulator Python murni = single source of truth
-│   ├── test_reference.py  # Unit test kalkulator (mirrors 8 kasus seed)
-│   ├── generator.py       # Schema -> prompt + expected (auto-verified)
-│   ├── ai_client.py       # Multi-provider: OpenRouter SDK + Gemini REST
-│   └── grader.py          # Grader utama (CLI rigor, arsip bukti)
-├── results/               # Arsip hasil per model/kasus (bukti reproducibility)
-├── .env                   # API key (di-gitignore, JANGAN di-commit)
-└── README.md
+│   ├── reference.py             # Pure-Python calculator = source of truth
+│   ├── test_reference.py        # 12 unit tests for the calculator
+│   ├── generator.py             # Schema -> prompts + expected (+ EN mirror)
+│   ├── ai_client.py             # OpenRouter + Gemini REST client, parser, retry
+│   ├── grader.py                # CLI runner, archives evidence per case
+│   └── report_generator.py      # Aggregates archives -> Markdown report
+├── results/
+│   ├── report.md                # Generated baseline report (English)
+│   └── gemini-3.1-flash-lite/baseline/   # Raw per-case evidence + summary
+└── .env                         # API keys (gitignored)
 ```
 
-## Menyiapkan API Key (file `.env`)
-
-```
-OPENROUTER_API_KEY=sk-or-v1-.....
-GEMINI_API_KEY=AIza.....        # gratis via aistudio.google.com
-# GEMINI_MODEL=gemini-3.5-flash # opsional; default sudah gemini-3.5-flash
-```
-
-Catatan:
-
-- Key dari [openrouter.ai](https://openrouter.ai/keys) dan
-  [aistudio.google.com](https://aistudio.google.com) (tanpa tanda kutip).
-- File `.env` sudah masuk `.gitignore`, jadi key tidak akan ter-commit.
-- Key juga bisa diberikan lewat environment variable biasa; jika tersedia,
-  `os.environ` tetap yang dipakai (`.env` tidak menimpanya).
-
-## Membangun Kasus (reference + generator)
-
-Kalkulator SSOT dan unit-testnya:
+## Quick start
 
 ```bash
-python -m unittest discover -s src   # 12 test, semua harus OK
+pip install -r requirements.txt   # or: pip install openai python-dotenv
+
+cp .env.example .env              # then fill in your keys
+
+# 1. Verify the source of truth
+python -m unittest discover -s src
+
+# 2. (Optional) regenerate cases
+python src/generator.py           # writes data/eval_cases_generated.json
+python src/generator.py --lang en # writes data/eval_cases_en.json
+
+# 3. Run the baseline (reproducible)
+python src/grader.py --model gemini-3.1-flash-lite --runs 3 \
+  --cases data/eval_cases_generated.json --tag baseline
+
+# 4. Build the report
+python src/report_generator.py --model gemini-3.1-flash-lite --tag baseline \
+  --out results/report.md
 ```
 
-Membangkitkan kasus baru (prompt Indonesia + expected otomatis + varian
-isomorfik harga x1.2/x2.0):
+On Windows, use `py` instead of `python` if that is how Python is registered.
 
-```bash
-python src/generator.py                 # tulis data/eval_cases_generated.json (46 kasus)
-python src/generator.py --preview 6     # lihat contoh tanpa menulis file
+`.env` format:
+
+```
+OPENROUTER_API_KEY=sk-or-v1-...
+GEMINI_API_KEY=AIza...
+# GEMINI_MODEL=gemini-3.5-flash   # optional override for --model gemini
 ```
 
-Kategori kasus: `ordering`, `exclusive-selection`, `boundary`, `tax-base`,
-`category-binding`, `rounding`, `points-cap` — schema tinggal ditambah
-paramset untuk memperluas eval tanpa menyentuh kode.
+## How the pipeline works
 
-## Cara Menjalankan
+1. `cases_schema.json` describes each scenario as structured parameters
+   (items, prices, thresholds, percentages) — not as prose. Prices can be
+   shifted by a multiplier (`1.0`, `1.2`, `2.0`).
+2. `generator.py` calls `reference.py` to compute the expected answer for every
+   parameter set and price shift, then renders the prompt and a rule
+   explanation. The same numeric answers are used for the Indonesian canonical
+   file and the English mirror.
+3. `grader.py` sends each prompt `--runs` times at `temperature=0`, extracts the
+   final number from the last numeric line (filtering provider metadata lines),
+   normalizes Indonesian thousands/decimal separators, compares with an absolute
+   tolerance of `0.01`, and writes evidence files.
+4. `report_generator.py` aggregates the evidence into per-category accuracy and
+   data-driven trophy findings.
 
-Dari root project (Fase 1 — rigor & reproducibility):
+### CLI options (grader)
 
-```bash
-# OpenRouter default
-python src/grader.py
+| Argument | Default | Purpose |
+|---|---|---|
+| `--model` | `openrouter/free` | OpenRouter slug, or `gemini` / a Gemini slug |
+| `--runs` | `3` | Runs per case (pass-rate statistics) |
+| `--out` | `results` | Archive root |
+| `--tag` | (empty) | Experiment label, stored as a subfolder |
+| `--cases` | `data/eval_cases.json` | Alternative cases file |
+| `--skip-existing` | off | Resume: skip cases with enough archived runs |
 
-# Gemini (frontier) pada kasus generator
-python src/grader.py --model gemini --runs 3 --cases data/eval_cases_generated.json --tag gemini-v1
+Exit codes: `0` = all runs passed, `1` = at least one failure, `2` = configuration
+error. Suitable for CI.
 
-# Open model pinned di OpenRouter
-python src/grader.py --model google/gemma-2-9b-it --runs 5 --tag baseline
-```
+### Failure categories
 
-| Argumen | Default | Fungsi |
-|---------|---------|--------|
-| `--model` | `openrouter/free` | Model yang diuji: slug OpenRouter, atau `gemini`/`gemini-<x>` |
-| `--runs` | `3` | Jumlah run per kasus (statistik pass-rate) |
-| `--out` | `results` | Folder arsip hasil |
-| `--tag` | (kosong) | Subfolder pelabelan eksperimen (mis. `baseline`) |
-| `--cases` | `data/eval_cases.json` | Path alternatif file kasus |
+`ordering`, `exclusive-selection`, `boundary` (minimum subtotal / free-shipping
+threshold), `tax-base` (VAT after discount), `category-binding` (category vs
+product-name traps), `rounding` (floor per item), `points-cap` (cap as a
+percentage of the post-discount total).
 
-Semua panggilan memakai **temperature=0** dan menanyakan reasoning dulu
-lalu angka final di baris terakhir (parser hanya membaca baris berangka —
-baris metadata provider seperti "User Safety: safe" difilter, dan format
-ribuan Indonesia seperti `1.585.000` dinormalisasi).
-
-Grader akan:
-
-1. Membaca semua test case dari `data/eval_cases.json`.
-2. Menjalankan tiap kasus sebanyak `--runs` kali.
-3. Membandingkan jawaban dengan `expected_output` (toleransi absolut **0.01**).
-4. Mengarsipkan bukti per kasus ke `results/<model>/<tag>/<CASE-ID>.json`:
+## Case format
 
 ```json
 {
-  "case_id": "TC-001",
-  "model": "openrouter/free",
-  "runs": [ { "run": 1, "actual": 1615000.0, "passed": false,
-              "attempts": 1, "duration_s": 14.8, "raw": "Reasoning...",
-              "error": "Expected: ... Actual: ..." } ],
-  "passed_runs": 0,
-  "pass_rate": 0.0
-}
-```
-
-serta ringkasan global `results/<model>/<tag>/_summary.json` (accuracy
-agregat). Contoh output konsol:
-
-```
-Model: openrouter/free | Runs/kasus: 3 | Arsip: results/openrouter__free/baseline
-Passed: 19/24 (79% akurasi)
-```
-
-**Exit code**: `0` semua lolos, `1` ada kasus gagal, `2` konfigurasi rusak —
-siap dipakai di CI/CD.
-
-## Format Test Case
-
-`data/eval_cases.json` adalah array berisi objek:
-
-```json
-{
-  "id": "TC-001",
-  "prompt": "Instruksi rumit untuk AI (diskon bertingkat, eksklusif, minimal transaksi).",
+  "id": "GEN-001",
+  "prompt": "The store applies TIERED discounts. ...",
   "expected_output": 1585000.0,
-  "rules": "Penjelasan langkah kalkulasi yang benar berdasarkan aturan bisnis."
+  "rules": "Computed by reference.py ... Subtotal 2,100,000; member discount 315,000; category extra 200,000.",
+  "category": "ordering + category-binding",
+  "scenario": "tiered_disc",
+  "paramset": 0,
+  "shift": 1.0
 }
 ```
 
-| Key | Tipe | Desripsi |
-|-----|------|----------|
-| `id` | string | Identitas unik test case (mis. `TC-001`). |
-| `prompt` | string | Soal kompleks yang dikirim ke AI. |
-| `expected_output` | number | Jawaban yang 100% benar (int/float). |
-| `rules` | string | Penjelasan aturan bisnis & cara kalkulasi yang diharapkan. |
+`expected_output` is always produced by `reference.py`; `rules` records the
+intermediate arithmetic for inspection.
 
-## Mengganti Model / Provider, dan Catatan Quota
+## Framework self-audit (why the numbers can be trusted)
 
-- **OpenRouter**: slug model. Banyak varian lama `:free` (llama-3, gemma-2-9b
-  `:free`, mistral-7b `:free`) sudah 404 dari katalog. `openrouter/free`
-  = auto-route ke model yang tersedia, tetapi jatah `free-models-per-day`
-  terbatas (tanpa kredit: kuota harian kecil).
-- **Gemini**: `--model gemini` memakai `GEMINI_MODEL` (default
-  `gemini-3.5-flash`). Model Gemini ditutup cepat untuk pengguna baru
-  (2.0/2.5-flash sudah 404 — verifikasi lewat `GET /v1beta/models`).
-- Retry/backoff 429 sudah ditangani client; grader bank jeda 3 detik antar
-  request (`REQUEST_DELAY`). To-go proyeksi biaya nol via Gemini + sebagian
-  OpenRouter.
+Two bugs were found during this work by treating the framework as an object of
+evaluation:
 
-## Tuning
+1. **Poisoned isomorphic prompts.** An earlier generator rendered unshifted
+   prices in the prompt while computing `expected_output` from shifted prices.
+   The model's answers looked like "copies of the small variant", which was
+   actually correct behavior for the poisoned prompt. After the audit, the
+   prompt renderer uses the shifted item list everywhere; the whole baseline was
+   discarded and re-run from scratch. The `results/` directory contains only
+   post-fix evidence.
+2. **Number parser misread Indonesian decimals.** `1.500.364,80` was split into
+   `1.500.364` and `,80`, yielding `8.0` and a false failure. The parser now
+   understands thousands dots plus comma decimals; `GEN-023` passes 3/3. This
+   is a reminder that an evaluator must be audited before it audits a model.
 
-- **Toleransi error**: ubah konstanta `TOLERANCE` (default `0.01`) di `src/grader.py`.
-- **Tingkat log**: ubah `level=logging.INFO` menjadi `logging.DEBUG` di `main()`
-  untuk melihat log detail pemanggilan AI client.
+## Provider notes (free-tier reality)
 
-## Dependensi
+- **OpenRouter**: `openrouter/free` auto-routes to available free models, but the
+  `free-models-per-day` quota is small without credits. Several legacy `:free`
+  slugs have been retired (404).
+- **Gemini**: the REST API is used directly (no extra SDK). Some older models
+  return 404 for new accounts, and a few frontier models have a 20-request/day
+  free-tier cap. `gemini-3.1-flash-lite` was stable for this baseline; transient
+  503s are handled by exponential backoff.
+- The client retries 429/5xx/network errors and empty/number-less responses,
+  and the grader spaces requests (`REQUEST_DELAY = 6.5s`) to respect free-tier
+  rate limits.
 
-```bash
-pip install openai python-dotenv
-```
+## Adding cases
+
+Add a template (or paramset) to `data/cases_schema.json`, then run
+`python src/generator.py` and `python src/generator.py --lang en`. `reference.py`
+is the only place where business logic lives; the generator must never hard-code
+an expected value.
+
+## License
+
+For the micro1 Eval Hackathon submission. Code is provided as-is for review and
+reproduction.
